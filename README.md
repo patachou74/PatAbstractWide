@@ -1,0 +1,2 @@
+# PatAbstractWide
+Theme for Mythtv
