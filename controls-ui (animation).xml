@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <!-- waits for a keypress fom the user -->
+    <window name="keygrabpopup">
+
+        <animation trigger="AboutToShow">
+            <section centre="left" duration="250">
+                <alpha start="0" end="255" easingcurve="Linear"/>
+                <zoom start="50" end="100" easingcurve="OutQuart"/>
+                <position start="-150,0" end="0,0"/>
+            </section>
+        </animation>
+
+        <animation trigger="AboutToHide">
+            <section centre="left" duration="250">
+                <alpha start="255" end="0" easingcurve="Linear"/>
+                <zoom start="100" end="50" easingcurve="InQuart"/>
+                <position start="0,0" end="-150,0"/>
+            </section>
+        </animation>
+        
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="keygrabpopup_background" from="base_background_shape_dark">
+            <area>420,270,440,160</area>
+        </shape>
+
+        <textarea name="message" from="base_textarea">
+            <area>335,280,610,80</area>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+        <shape name="message_separator" from="base_background_shape">
+            <area>421,365,438,1</area>
+        </shape>
+
+        <button name="ok" from="base_button">
+            <position>475,380</position>
+            <value>Ok</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>655,380</position>
+            <value>Cancel</value>
+        </button>
+
+    </window>
+
+
+
+
+
+
+    <!-- allows the user to change the keyboard associations -->
+    <window name="controls">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Key Shortcuts</value>
+            </textarea>
+        </textarea>
+
+        <shape name="controls_background" from="base_background_shape">
+            <area>265,85,740,512</area>
+        </shape>
+        
+        <textarea name="leftdesc" from="base_textarea">
+            <area>280,95,350,20</area>
+            <value>Contexts</value>
+            <font>text_small</font>
+        </textarea>
+        <textarea name="rightdesc" from="base_textarea">
+            <area>640,95,350,20</area>
+            <value>Actions</value>
+            <font>text_small</font>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <buttonlist name="leftlist" from="base_buttonlist">
+            <area>280,120,350,393</area>
+        </buttonlist>
+        <buttonlist name="rightlist" from="base_buttonlist">
+            <area>640,120,350,393</area>
+        </buttonlist>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>266,530,738,1</area>
+        </shape>
+        
+        <!-- these four buttons show the assigned key.
+            If there is none assigned, its empty. -->
+        <button name="action_0" from="base_button">
+            <position>280,545</position>
+        </button>
+        <button name="action_1" from="base_button">
+            <position>465,545</position>
+        </button>
+        <button name="action_2" from="base_button">
+            <position>655,545</position>
+        </button>
+        <button name="action_3" from="base_button">
+            <position>840,545</position>
+        </button>
+
+        <shape name="description_background_bottom" from="base_background_shape">
+            <area>-15,612,1310,90</area>
+        </shape>
+        <textarea name="description" from="base_textarea">
+            <area>120,612,1040,90</area>
+            <scroll direction="vertical" rate="10"/>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+            <value>This screen displays the status of various system components</value>
+        </textarea>
+
+    </window>
+
+</mythuitheme>
