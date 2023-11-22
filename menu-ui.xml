@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+    <window name="mainmenu">  
+
+        <shape name="MyFirstShape"> 
+            <area>0,0,1280,720</area> 
+            <type>box</type> 
+            <fill color="#070721" alpha="230" />
+        </shape>
+
+        <imagetype name="background" from="base_background">
+            <area>0,0,1280,720</area>
+            <preserveaspect>yes</preserveaspect>
+            <filename>images/background.jpg</filename>
+        </imagetype>
+
+        <imagetype name="header_background">
+            <area>-290,-1,560,50</area>
+            <filename>images/media/header_left.png</filename>
+        </imagetype>
+        <clock name="clock">
+            <area>10,0,230,30</area>
+            <font>text</font>
+            <template>%DATE%, %TIME%</template>
+            <align>left,vcenter</align>
+        </clock>
+
+        <!-- Shows different background images for different menus 
+             Only the main menu entries have extra backgrounds. -->
+        <statetype name="watermarks">
+            <position>0,0</position>
+        
+            <!-- Background images for the main menu -->
+            <state name="MENU_TV">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/tv.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <!-- Background images for the Video menu -->
+            <state name="VIDEO_BROWSER">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/video.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+
+            <state name="MENU_VIDEOS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/video.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_IMAGES">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/gallery.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="IMAGES">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/gallery.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_MUSIC">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/music.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="DVD_PLAY">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/dvd.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_GAMES">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/games.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_INFO_CENTER">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/web.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_EXTRAS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/setup.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+
+
+            <!-- Background images for the information menu -->
+            <state name="WEBPAGE">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/web.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+            <state name="WEBPAGEbook">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/web_settings.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+            <state name="STREAM_PLAY">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/streaming.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+            <state name="NET_VIDEO_TREE">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/web.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+            <state name="NEWS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/news.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+            <state name="WEATHER">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/weather.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+             <state name="ZONEMINDER">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/zoneminder.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+
+
+            <!-- Background images for the extras menu -->
+            <state name="IMAGEDEFONT">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/gallery_settings.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="RVB">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/dvd_rip_settings.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_MAIN">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/big_arrow_down.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MUSIC_SCAN">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/music_settings.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="DVD_RIP">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/dvd_rip.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MUSIC_RIP">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/dvd_rip.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="ARCHIVE">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/dvd_rip.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="TV_STATUS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/hardware_info.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,10,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_UTILITIES_SETUP">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/info_settings.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,5,170,150</area>
+                </imagetype>
+            </state>
+
+     
+            <!-- Background images for the TV menu -->
+            <state name="TV_WATCH_TV">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/tv.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="TV_PROGRAM_GUIDE">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/tv.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <!-- TODO change image -->
+            <state name="TV_MENU_ORGANIZE">
+                <imagetype name="watermark">
+                    <filename>images/scripts.jpg</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <!-- TODO change image -->
+            <state name="TV_WATCH_RECORDINGS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/tv.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            
+            <!-- TODO change image -->
+            <state name="TV_WATCH_RECORDINGS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/tv.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+
+            <!-- Background images for the Music menu -->
+            <state name="MUSIC_PLAY">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/music.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MUSIC_PLAYLIST">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/defaultfanart.jpg</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+
+
+            <!-- The following states are not part of the blue-abstract menu
+                 and have only been added for consistency with other menus -->
+            <state name="MENU_MANAGE_RECORDINGS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/video.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_OPTICAL_DISKS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/play.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_PLUGINS">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/setup.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+            <state name="MENU_ADVANCED">
+                <imagetype name="watermark">
+                    <filename>images/watermarks/setup.png</filename>
+                    <preserveaspect>yes</preserveaspect>
+                    <area>20,0,170,150</area>
+                </imagetype>
+            </state>
+        </statetype>
+
+        <!-- The structure of the menu. This is a vertical list -->
+        <buttonlist name="menu">
+            <area>30,125,250,520</area>
+            <layout>vertical</layout>
+            <spacing>10</spacing>
+            <wrapstyle>items</wrapstyle>
+            <buttonarea>0,30,450,460</buttonarea>
+            <triggerevent context="Global" action="SELECT">RIGHT</triggerevent>
+            <triggerevent context="Global" action="ESCAPE">LEFT</triggerevent>
+
+            <statetype name="buttonitem">
+                <!-- General settings for the menu entry -->
+                <state name="active">
+                    <area>0,0,250,56</area>
+                    <imagetype name="background">
+                        <filename />
+                    </imagetype>
+                    <textarea name="buttontext">
+                        <area>14,0,520,40</area>
+                        <font>menu</font>
+                        <align>left,vcenter</align>
+                        <cutdown>yes</cutdown>
+                    </textarea>
+                </state>
+                <!-- Menu entry has been selected and is active -->
+                <state name="selectedactive" from="active">
+                    <imagetype name="background">
+                        <filename>images/media/menu.png</filename>
+                        <alphapulse min="120" max="255" change="2"/>
+                        <alpha>200</alpha>
+                    </imagetype>
+                    <textarea name="description">
+                        <area>15,35,520,24</area>
+                        <font>menu_description</font>
+                        <align>left,vcenter</align>
+                        <cutdown>yes</cutdown>
+                    </textarea>
+                </state>
+            </statetype>
+
+            <!-- Show the arrow image that indicates that there are
+            more menu entries above the first visible menu -->
+            <statetype name="upscrollarrow">
+                <position>20,0</position>
+                <showempty>yes</showempty>
+                <state type="full">
+                    <imagetype name="upoff">
+                        <filename>images/icons/button_arrow_up.png</filename>
+                    </imagetype>
+                </state>
+            </statetype>
+
+            <!-- Show the arrow image that indicates that there are
+            more menu entries below the last visible menu -->
+            <statetype name="downscrollarrow">
+                <position>20,495</position>
+                <showempty>yes</showempty>
+                <state type="full">
+                    <imagetype name="dnoff">
+                        <filename>images/icons/button_arrow_down.png</filename>
+                    </imagetype>
+                </state>
+            </statetype>
+        </buttonlist>
+
+    </window>
+    
+</mythuitheme>

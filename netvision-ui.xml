@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <!-- shows a list of available sites that the user can search for videos
+        the results will be presented on the right and information with a
+        preview image at the bottom -->
+    <window name="netsearch" include="base_netvision.xml">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Search Videos</value>
+            </textarea>
+        </textarea>
+
+        <!-- this is the background around the sites -->
+        <shape name="netsearch_background" from="base_background_shape">
+            <area>20,50,1240,395</area>
+        </shape>
+        
+        <textarea name="nosites">
+            <area>220,50,840,395</area>
+            <multiline>yes</multiline>
+            <align>allcenter</align>
+            <value>Can't find any search scripts!\nThis usually indicates missing search script prerequisities.\nTry running a script from the command line.</value>
+        </textarea>
+        
+        <textarea name="searchlab" from="base_textarea">
+            <area>35,65,350,36</area>
+            <align>right,vcenter</align>
+            <value>Search Term:</value>
+        </textarea>
+        <textedit name="search" from="base_textedit">
+            <position>395,65</position>
+        </textedit>
+
+        <!-- the selection of available sites -->
+        <buttonlist name="sites" from="base_buttonlist">
+            <area>35,110,350,316</area>
+        </buttonlist>
+
+        <!-- the selection of the available results -->
+        <buttonlist name="results" from="base_buttonlist">
+            <area>395,110,850,316</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,850,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,590,36</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                    <textarea name="length" from="base_textarea">
+                        <area>620,0,90,36</area>
+                        <align>right,vcenter</align>
+                    </textarea>
+                    <textarea name="date" from="base_textarea">
+                        <area>720,0,120,36</area>
+                        <align>right,vcenter</align>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active"/>
+                <state name="selectedactive" from="active">
+                    <area>0,0,850,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,850,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+        </buttonlist>
+
+        <group name="netvision_details_group" from="base_netvision_details_group">
+            <position>20,460</position>
+        </group>
+
+    </window>
+
+
+    
+    
+
+    <!-- shows a list of available sites that the user can activate -->
+    <window name="treeeditor">
+
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="dialog_background" from="base_background_shape_dark">
+            <area>450,150,380,388</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>465,160,350,60</area>
+            <value>Choose the sites you wish to browse/search.</value>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+        <shape name="title_separator" from="base_background_shape">
+            <area>451,230,378,1</area>
+        </shape>
+
+        <buttonlist name="grabbers" from="base_buttonlist">
+            <area>465,245,350,275</area>
+        </buttonlist>
+
+    </window>
+
+
+
+
+
+    <!-- shows a list of available rss feeds that the user has configured.
+        Allows the user to add, edit or remove the feeds. -->
+    <window name="rsseditor">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Manage RSS Subscriptions</value>
+            </textarea>
+        </textarea>
+
+        <shape name="rsslist_background" from="base_background_shape">
+            <area>390,185,510,337</area>
+        </shape>
+       
+        <buttonlist name="sites" from="base_buttonlist">
+            <area>405,200,480,238</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,480,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active" />
+                <state name="selectedactive">
+                    <area>0,0,480,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                    </textarea>
+                </state>
+                <state name="selectedinactive">
+                    <area>0,0,480,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                    </textarea>
+                </state>
+            </statetype>
+        </buttonlist>       
+        
+        <shape name="button_separator" from="base_background_shape">
+            <area>391,455,508,1</area>
+        </shape>
+
+        <button name="edit" from="base_button">
+            <position>405,470</position>
+            <value>Edit</value>
+        </button>
+        <button name="new" from="base_button">
+            <position>570,470</position>
+            <value>New</value>
+        </button>
+        <button name="delete" from="base_button">
+            <position>735,470</position>
+            <value>Delete</value>
+        </button>
+        
+        <shape name="netvision_details_background" from="base_background_shape">
+            <area>20,540,1240,165</area>
+        </shape>
+               
+        <textarea name="title" from="base_textarea">
+            <area>35,550,960,36</area>
+            <font>title</font>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <textarea name="url" from="base_textarea">
+            <area>35,580,900,36</area>
+        </textarea>
+
+        <textarea name="author" from="base_textarea">
+            <area>945,580,300,36</area>
+            <align>right,vcenter</align>
+        </textarea>
+        
+        <shape name="description_separator" from="base_background_shape">
+            <area>21,617,1238,1</area>
+        </shape>
+
+        <textarea name="description" from="base_textarea">
+            <area>35,627,1210,63</area>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+            <align>left,bottom</align>
+        </textarea>
+
+    </window>
+
+
+
+
+
+    <!-- allows the user to edit or enter new values for the selected
+        rss feed that he selected in the rsseditor window. -->
+    <window name="rsseditpopup">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Manage RSS Subscriptions</value>
+            </textarea>
+        </textarea>
+
+        <shape name="rsseditpopup_background" from="base_background_shape">
+            <area>265,185,765,332</area>
+        </shape>
+
+        <textarea name="title_label" from="base_textarea">
+            <area>280,200,350,36</area>
+            <align>right,vcenter</align>
+            <value>Feed Name:</value>
+        </textarea>
+        <textarea name="url_label" from="title_label">
+            <position>280,240</position>
+            <value>Feed URL:</value>
+        </textarea>
+        <textarea name="desc_label" from="title_label">
+            <position>280,280</position>
+            <value>Site Description:</value>
+        </textarea>
+        <textarea name="author_label" from="title_label">
+            <position>280,320</position>
+            <value>Feed Author:</value>
+        </textarea>
+        <textarea name="downloadlabel" from="title_label">
+            <position>280,360</position>
+            <value>Download this feed automatically:</value>
+        </textarea>
+        <textarea name="browselabel" from="title_label">
+            <position>280,400</position>
+            <value>Choose Image:</value>
+        </textarea>
+        
+        <textedit name="title" from="base_textedit">
+            <position>640,200</position>
+        </textedit>
+        <textedit name="url" from="base_textedit">
+            <position>640,240</position>
+        </textedit>
+        <textedit name="description" from="base_textedit">
+            <position>640,280</position>
+        </textedit>
+        <textedit name="author" from="base_textedit">
+            <position>640,320</position>
+        </textedit>
+        <checkbox name="download" from="base_checkbox">
+            <position>640,360</position>
+        </checkbox>
+        <button name="preview_browse" from="base_searchbutton">
+            <position>640,400</position>
+        </button>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>266,450,763,1</area>
+        </shape>
+
+        <button name="ok" from="base_button">
+            <position>485,465</position>
+            <value>Save</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>650,465</position>
+            <value>Cancel</value>
+        </button>
+
+        <imagetype name="preview_background_image">
+            <area>815,365,200,139</area>
+            <mask>images/shared/netvision/gallery_item_nfmask.png</mask>
+            <filename>images/shared/netvision/default_netvision.png</filename>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="preview_image_border">
+            <area>815,365,200,139</area>
+            <filename>images/shared/netvision/gallery_nfborder.png</filename>
+        </imagetype>
+        <imagetype name="preview">
+            <area>815,365,200,139</area>
+            <mask>images/shared/netvision/gallery_item_nfmask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        
+    </window>
+
+
+   
+   
+   
+    <!-- Shows a list of rss feeds and videos like in a file browser.
+         there are three columns like in the video plugin where the user can navigate
+         through the items and see some details at the bottom -->
+    <window name="tree" include="base_netvision.xml">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>NetVision Tree</value>
+            </textarea>
+        </textarea>
+
+        <shape name="netvision_tree_background" from="base_background_shape">
+            <area>20,50,1240,385</area>
+        </shape>
+        <textarea name="nosites" from="base_textarea">
+            <area>220,50,840,385</area>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+            <value>You haven't added any Sites/RSS Feeds yet! To add a site, press MENU, then choose "Scan/Manage Subscriptions," then "Manage Site Subscriptions."</value>
+        </textarea>
+
+        <textarea name="breadcrumbs" from="base_textarea">
+            <area>35,60,1210,36</area>
+            <cutdown>left</cutdown>
+        </textarea>
+
+        <buttontree name="videos">
+            <area>35,100,1210,316</area>
+            <numlists>3</numlists>
+            <spacing>10</spacing>
+            <buttonlist name="listtemplate" from="base_buttonlist">
+                <area>0,0,395,316</area>                
+                <statetype name="buttonitem">
+                    <state name="active">
+                        <area>0,0,395,36</area>
+                        <textarea name="buttontext" from="base_textarea">
+                            <area>8,0,100%-16,36</area>
+                            <scroll direction="horizontal" rate="35"/>
+                        </textarea>
+                    </state>
+                    <state name="inactive" from="active"/>
+                    <state name="selectedactive">
+                        <area>0,0,395,36</area>
+                        <shape name="background" from="base_button_shape_selectedactive" />
+                    </state>
+                    <state name="selectedinactive" from="active">
+                        <area>0,0,395,36</area>
+                        <shape name="background" from="base_button_shape_selectedinactive" />
+                    </state>
+                </statetype>
+                <statetype name="upscrollarrow">
+                    <position>100%-65,100%-5</position>
+                </statetype>
+                <statetype name="downscrollarrow">
+                    <position>100%-40,100%-5</position>
+                </statetype>
+            </buttonlist>
+        </buttontree>
+
+        <group name="netvision_details_group" from="base_netvision_details_group">
+            <position>20,460</position>            
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- The Browser view shows a horizontal list of videos and only the
+        cover and details of one video at a time. the preview is shown
+        at the left and in the center of the screen some video details -->
+    <window name="browser" include="base_netvision.xml">
+
+        <imagetype name="fanart" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>NetVision Browser</value>
+            </textarea>
+        </textarea>
+
+        <group name="netvision_details_group" from="base_netvision_details_group">
+            <position>20,270</position>
+        </group>
+
+        <shape name="netvision_videolist_background" from="base_background_shape">
+            <area>-15,535,1310,160</area>
+        </shape>
+        
+        <textarea name="nosites" from="base_textarea">
+            <area>220,535,840,160</area>
+            <multiline>yes</multiline>
+            <align>allcenter</align>
+            <value>You haven't added any Sites/RSS Feeds yet!\nTo add a site, press MENU, then choose "Scan/Manage Subscriptions," then "Manage Site Subscriptions."</value>
+        </textarea>
+
+        <group name="netvision_videolist_group" from="base_netvision_videolist_group">
+            <area>35,548,1240,130</area>
+            <buttonlist name="videos">
+                <area>0,0,1230,130</area>
+                <scrollstyle>center</scrollstyle>
+                <buttonarea>0,0,1230,130</buttonarea>
+            </buttonlist>
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- The Gallery view shows a list of all videos side by side -->
+    <window name="gallery" include="base_netvision.xml">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>NetVision Gallery</value>
+            </textarea>
+        </textarea>
+
+        <shape name="netvision_gallery_list_background" from="base_background_shape">
+            <area>20,50,1240,570</area>
+        </shape>
+        
+        <textarea name="nosites" from="base_textarea">
+            <area>220,50,840,570</area>
+            <multiline>yes</multiline>
+            <align>allcenter</align>
+            <value>You haven't added any Sites/RSS Feeds yet! To add a site, press MENU, then choose "Scan/Manage Subscriptions," then "Manage Site Subscriptions."</value>
+        </textarea>
+
+        <group name="netvision_videolist_group" from="base_netvision_videolist_group">
+            <position>35,65</position>
+        </group>     
+        
+        <shape name="netvision_gallery_info_background" from="base_background_shape">
+            <area>-15,636,1310,70</area>
+        </shape>
+        <textarea name="title" from="base_textarea">
+            <area>25,640,1000,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+        <textarea name="author" from="title">
+            <area>25,675,1000,20</area>
+            <template>Author: %1</template>
+        </textarea>
+        <textarea name="position" from="base_textarea">
+            <area>1100,640,155,30</area>
+            <align>right,vcenter</align>
+        </textarea>
+        <textarea name="length" from="position">
+            <area>1100,675,155,20</area>
+            <template>Length: %1</template>
+        </textarea>
+
+    </window>
+
+</mythuitheme>

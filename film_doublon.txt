@@ -1,0 +1,10 @@
+title	TT	min(filename)	max(filename)
+Aladdin	2	FILMS/A/Aladdin.(2019).mkv	FILM_DA/Aladdin.mkv
+Animatrix	2	FILMS/M/The Ultimate Matrix Collection/The Animatrix (2003).mkv	FILM_DA/Animatrix.avi
+L'Âge de glace	2	FILM_DA/L'Age de Glace/L'Age de Glace 2.mkv	FILM_DA/L'Age de Glace/L'Age de Glace.mkv
+La Belle et la Bête	2	FILMS/B/Beauty.And.The.Beast.(2017).mkv	FILM_DA/La.Belle.Et.La.Bete.mkv
+Le Roi Lion	2	FILMS/R/The.Lion.King.(2019).mkv	FILM_DA/The.Lion.King.(1994).mkv
+Monster Hunter	2	FILMS/M/Monster Hunt (2015).mkv	FILMS/M/Monster Hunter (2020).mkv
+Mulan	2	FILMS/M/Mulan.(2020).mkv	FILM_DA/Mulan (1998).mkv
+S.O.S. Fantômes	2	FILMS/S/Ghostbusters (1984).mkv	FILMS/S/Ghostbusters (2016) Theatrical.mkv
+Venom	2	FILMS/V/Venom.(2018).mkv	FILMS/V/Venom.avi

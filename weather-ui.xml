@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+
+    <!-- base screen that acs as a background for the other 
+         screens that show the actual weather information -->
+    <window name="weatherbase">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/watermarks/weatherfanart.jpg</filename>
+        </imagetype>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text" />
+        </textarea>
+
+        <!-- shows the name of the current screen in the header area -->
+        <textarea name="header" from="base_textarea">
+            <area>215,0,300,30</area>
+            <align>allcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <imagetype name="status_background">
+            <area>730,-1,560,50</area>
+            <filename>images/media/header_right.png</filename>
+        </imagetype>
+
+        <textarea name="pause_text" from="base_textarea">
+            <area>780,0,100,30</area>
+        </textarea>
+
+        <shape name="weatherbase_background" from="base_background_shape">
+            <area>-15,670,1310,38</area>
+        </shape>
+
+        <textarea name="update_text" from="base_textarea">
+            <area>910,675,350,30</area>
+            <align>right,vcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <!-- shows the surrent conditions of the weather -->
+    <window name="Current Conditions">
+
+        <shape name="current_condition_background" from="base_background_shape">
+            <area>290,220,697,262</area>
+        </shape>
+
+        <textarea name="cclocation" from="base_textarea">
+            <area>900,0,365,30</area>
+            <align>right,vcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <textarea name="observation_time" from="base_textarea">
+            <area>910,675,350,30</area>
+            <align>right,vcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <!-- the icon and the temp information -->
+        <imagetype name="weather_icon">
+            <area>305,235,200,150</area>
+            <filename>unknown.png</filename>
+        </imagetype>
+        <textarea name="weather" from="base_textarea">
+            <area>305,395,200,36</area>
+            <multiline>yes</multiline>
+            <align>allcenter</align>
+        </textarea>
+        <textarea name="temp" from="base_textarea">
+            <area>305,435,200,36</area>
+            <align>allcenter</align>
+        </textarea>
+
+        <!-- the labels on the left side -->
+        <textarea name="humiditylbl" from="base_textarea">
+            <area>520,235,220,36</area>
+            <value>Humidity</value>
+            <align>right,vcenter</align>
+        </textarea>
+        <textarea name="pressurelbl" from="humiditylbl">
+            <position>520,275</position>
+            <value>Pressure</value>
+        </textarea>
+        <textarea name="windlbl" from="humiditylbl">
+            <position>520,315</position>
+            <value>Wind(Gust)</value>
+        </textarea>
+        <textarea name="dirlbl" from="humiditylbl">
+            <position>520,355</position>
+            <value>Wind Direction</value>
+        </textarea>
+        <textarea name="visilbl" from="humiditylbl">
+            <position>520,395</position>
+            <value>Visibility</value>
+        </textarea>
+        <textarea name="apptlbl" from="humiditylbl">
+            <position>520,435</position>
+            <value>Feels Like</value>
+        </textarea>
+
+        <!-- the value in the center -->
+        <textarea name="relative_humidity" from="base_textarea">
+            <area>755,235,300,36</area>
+        </textarea>
+        <textarea name="pressure" from="relative_humidity">
+            <position>755,275</position>
+        </textarea>
+        <textarea name="wind_spdgst" from="relative_humidity">
+            <position>755,315</position>
+        </textarea>
+        <textarea name="wind_dir" from="relative_humidity">
+            <position>755,355</position>
+        </textarea>
+        <textarea name="visibility" from="relative_humidity">
+            <position>755,395</position>
+        </textarea>
+        <textarea name="appt" from="relative_humidity">
+            <position>755,435</position>
+        </textarea>
+
+        
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+    <window name="Three Day Forecast">
+
+        <textarea name="3dlocation" from="base_textarea">
+            <area>900,0,365,30</area>
+            <align>right,vcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <shape name="background-0" from="base_background_shape">
+            <area>100,100,350,245</area>
+        </shape>
+        <shape name="background-1" from="background-0">
+            <position>465,100</position>
+        </shape>
+        <shape name="background-2" from="background-0">
+            <position>830,100</position>
+        </shape>
+
+        <imagetype name="icon-0">
+            <area>190,140,196,140</area>
+            <preserveaspect>yes</preserveaspect>
+        </imagetype>
+        <imagetype name="icon-1" from="icon-0">
+            <position>545,140</position>
+        </imagetype>
+        <imagetype name="icon-2" from="icon-0">
+            <position>910,140</position>
+        </imagetype>
+        
+        <textarea name="date-0" from="base_textarea">
+            <area>115,110,330,30</area>
+            <align>left,vcenter</align>
+            <cutdown>yes</cutdown>
+        </textarea>
+        <textarea name="date-1" from="date-0">
+            <position>480,110</position>
+        </textarea>
+        <textarea name="date-2" from="date-0">
+            <position>845,110</position>
+        </textarea>
+        
+        <textarea name="high-0" from="base_textarea">
+            <area>115,290,330,20</area>
+            <font>text_small</font>
+            <template>High Temperature:  %1</template>
+        </textarea>
+        <textarea name="high-1" from="high-0">
+            <position>480,290</position>
+        </textarea>
+        <textarea name="high-2" from="high-0">
+            <position>845,290</position>
+        </textarea>
+
+        <textarea name="low-0" from="base_textarea">
+            <area>115,315,330,20</area>
+            <font>text_small</font>
+            <template>Low Temperature:  %1</template>
+        </textarea>
+        <textarea name="low-1" from="low-0">
+            <position>480,315</position>
+        </textarea>
+        <textarea name="low-2" from="low-0">
+            <position>845,315</position>
+        </textarea>
+
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+    <window name="Six Day Forecast">
+
+        <textarea name="6dlocation" from="base_textarea">
+            <area>900,0,365,30</area>
+            <align>right,vcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <shape name="background-0" from="base_background_shape">
+            <area>100,100,350,245</area>
+        </shape>
+        <shape name="background-1" from="background-0">
+            <position>465,100</position>
+        </shape>
+        <shape name="background-2" from="background-0">
+            <position>830,100</position>
+        </shape>
+        <shape name="background-3" from="background-0">
+            <position>100,360</position>
+        </shape>
+        <shape name="background-4" from="background-0">
+            <position>465,360</position>
+        </shape>
+        <shape name="background-5" from="background-0">
+            <position>830,360</position>
+        </shape>
+
+        <imagetype name="icon-0">
+            <area>190,140,196,140</area>
+            <preserveaspect>yes</preserveaspect>
+        </imagetype>
+        <imagetype name="icon-1" from="icon-0">
+            <position>545,140</position>
+        </imagetype>
+        <imagetype name="icon-2" from="icon-0">
+            <position>910,140</position>
+        </imagetype>
+        <imagetype name="icon-3" from="icon-0">
+            <position>180,400</position>
+        </imagetype>
+        <imagetype name="icon-4" from="icon-0">
+            <position>545,400</position>
+        </imagetype>
+        <imagetype name="icon-5" from="icon-0">
+            <position>910,400</position>
+        </imagetype>
+        
+        <textarea name="date-0" from="base_textarea">
+            <area>115,110,330,30</area>
+            <align>left,vcenter</align>
+            <cutdown>yes</cutdown>
+        </textarea>
+        <textarea name="date-1" from="date-0">
+            <position>480,110</position>
+        </textarea>
+        <textarea name="date-2" from="date-0">
+            <position>845,110</position>
+        </textarea>
+        <textarea name="date-3" from="date-0">
+            <position>115,370</position>
+        </textarea>
+        <textarea name="date-4" from="date-0">
+            <position>480,370</position>
+        </textarea>
+        <textarea name="date-5" from="date-0">
+            <position>845,370</position>
+        </textarea>
+        
+        <textarea name="high-0" from="base_textarea">
+            <area>115,290,330,20</area>
+            <font>text_small</font>
+            <template>High Temperature:  %1</template>
+        </textarea>
+        <textarea name="high-1" from="high-0">
+            <position>480,290</position>
+        </textarea>
+        <textarea name="high-2" from="high-0">
+            <position>845,290</position>
+        </textarea>
+        <textarea name="high-3" from="high-0">
+            <position>115,550</position>
+        </textarea>
+        <textarea name="high-4" from="high-0">
+            <position>480,550</position>
+        </textarea>
+        <textarea name="high-5" from="high-0">
+            <position>845,550</position>
+        </textarea>
+
+        <textarea name="low-0" from="base_textarea">
+            <area>115,315,330,20</area>
+            <font>text_small</font>
+            <template>Low Temperature:  %1</template>
+        </textarea>
+        <textarea name="low-1" from="low-0">
+            <position>480,315</position>
+        </textarea>
+        <textarea name="low-2" from="low-0">
+            <position>845,315</position>
+        </textarea>
+        <textarea name="low-3" from="low-0">
+            <position>115,575</position>
+        </textarea>
+        <textarea name="low-4" from="low-0">
+            <position>480,575</position>
+        </textarea>
+        <textarea name="low-5" from="low-0">
+            <position>845,575</position>
+        </textarea>
+
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <window name="18 Hour Forecast">
+
+        <textarea name="18hrlocation" from="base_textarea">
+            <area>900,0,365,30</area>
+            <align>right,vcenter</align>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <shape name="background-0" from="base_background_shape">
+            <area>100,100,350,245</area>
+        </shape>
+        <shape name="background-1" from="background-0">
+            <position>465,100</position>
+        </shape>
+        <shape name="background-2" from="background-0">
+            <position>830,100</position>
+        </shape>
+        <shape name="background-3" from="background-0">
+            <position>100,360</position>
+        </shape>
+        <shape name="background-4" from="background-0">
+            <position>465,360</position>
+        </shape>
+        <shape name="background-5" from="background-0">
+            <position>830,360</position>
+        </shape>
+
+        <imagetype name="18icon-0">
+            <area>190,140,196,140</area>
+            <preserveaspect>yes</preserveaspect>
+        </imagetype>
+        <imagetype name="18icon-1" from="18icon-0">
+            <position>545,140</position>
+        </imagetype>
+        <imagetype name="18icon-2" from="18icon-0">
+            <position>910,140</position>
+        </imagetype>
+        <imagetype name="18icon-3" from="18icon-0">
+            <position>180,400</position>
+        </imagetype>
+        <imagetype name="18icon-4" from="18icon-0">
+            <position>545,400</position>
+        </imagetype>
+        <imagetype name="18icon-5" from="18icon-0">
+            <position>910,400</position>
+        </imagetype>
+
+        <textarea name="time-0" from="base_textarea">
+            <area>115,110,330,30</area>
+            <align>left,vcenter</align>
+            <cutdown>yes</cutdown>
+        </textarea>
+        <textarea name="time-1" from="time-0">
+            <position>480,110</position>
+        </textarea>
+        <textarea name="time-2" from="time-0">
+            <position>845,110</position>
+        </textarea>
+        <textarea name="time-3" from="time-0">
+            <position>115,370</position>
+        </textarea>
+        <textarea name="time-4" from="time-0">
+            <position>480,370</position>
+        </textarea>
+        <textarea name="time-5" from="time-0">
+            <position>845,370</position>
+        </textarea>
+        
+        <textarea name="temp-0" from="base_textarea">
+            <area>115,290,330,20</area>
+            <font>text_small</font>
+            <template>Temperature:  %1</template>
+        </textarea>
+        <textarea name="temp-1" from="temp-0">
+            <position>480,290</position>
+        </textarea>
+        <textarea name="temp-2" from="temp-0">
+            <position>845,290</position>
+        </textarea>
+        <textarea name="temp-3" from="temp-0">
+            <position>115,550</position>
+        </textarea>
+        <textarea name="temp-4" from="temp-0">
+            <position>480,550</position>
+        </textarea>
+        <textarea name="temp-5" from="temp-0">
+            <position>845,550</position>
+        </textarea>
+
+        <textarea name="pop-0" from="base_textarea">
+            <area>115,315,330,20</area>
+            <font>text_small</font>
+            <template>Chance of Precipitation:  %1</template>
+        </textarea>
+        <textarea name="pop-1" from="pop-0">
+            <position>480,315</position>
+        </textarea>
+        <textarea name="pop-2" from="pop-0">
+            <position>845,315</position>
+        </textarea>
+        <textarea name="pop-3" from="pop-0">
+            <position>115,575</position>
+        </textarea>
+        <textarea name="pop-4" from="pop-0">
+            <position>480,575</position>
+        </textarea>
+        <textarea name="pop-5" from="pop-0">
+            <position>845,575</position>
+        </textarea>
+
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <window name="Static Map">
+
+        <shape name="staticmap_background" from="base_background_shape">
+            <area>290,80,697,575</area>
+        </shape>
+
+        <textarea name="smdesc" from="base_textarea">
+            <area>305,85,410,36</area>
+        </textarea>
+
+        <textarea name="updatetime" />
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>291,125,695,1</area>
+        </shape>
+
+        <imagetype name="map">
+            <area>305,140,667,500</area>
+        </imagetype>
+
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <window name="Animated Map">
+
+        <shape name="animatedmap_background" from="base_background_shape">
+            <area>290,80,697,575</area>
+        </shape>
+
+        <textarea name="amdesc" from="base_textarea">
+            <area>305,85,410,36</area>
+        </textarea>
+
+        <textarea name="updatetime"/>
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>291,125,695,1</area>
+        </shape>
+
+        <imagetype name="animatedimage">
+            <area>305,140,667,500</area>
+        </imagetype>
+
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <window name="Severe Weather Alerts">
+
+        <shape name="sw_alerts_background" from="base_background_shape">
+            <area>290,80,697,575</area>
+        </shape>
+
+        <textarea name="swlocation" from="base_textarea">
+            <area>305,85,410,36</area>
+        </textarea>
+
+        <textarea name="updatetime" />
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>291,125,695,1</area>
+        </shape>
+
+        <textarea name="alerts" from="base_textarea">
+            <area>305,140,667,500</area>
+            <align>left,top</align>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+
+        <!-- These two are shown at the bottom -->
+        <imagetype name="copyrightlogo">
+            <area>0,730,1,1</area>
+        </imagetype>
+
+        <textarea name="copyright" from="base_textarea">
+            <area>35,675,700,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <!-- global settings of the weather screen -->
+    <window name="global-setup">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Global Settings</value>
+            </textarea>
+        </textarea>
+
+        <shape name="global-setup_background" from="base_background_shape">
+            <area>360,425,560,172</area>
+        </shape>
+
+        <textarea name="timeout_label" from="base_textarea">
+            <area>375,440,430,36</area>
+            <value>Seconds to display each page:</value>
+            <align>right,vcenter</align>
+        </textarea>
+
+        <textarea name="backgroundcheck_label" from="base_textarea">
+            <area>375,480,430,36</area>
+            <value>Retrieve data in the background:</value>
+            <align>right,vcenter</align>
+        </textarea>
+
+        <spinbox name="timeout_spinbox" from="base_spinbox">
+            <position>820,440</position>
+        </spinbox>
+        <checkbox name="backgroundcheck" from="base_checkbox">
+            <position>820,480</position>
+        </checkbox>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>361,530,558,1</area>
+        </shape>
+
+        <button name="finishbutton" from="base_button">
+            <position>565,545</position>
+            <value>Finish</value>
+        </button>
+
+        <shape name="helptext_background_bottom" from="base_background_shape">
+            <area>-15,615,1310,90</area>
+        </shape>
+        <textarea name="helptext" from="base_textarea">
+            <area>120,615,1040,90</area>
+            <scroll direction="vertical" rate="10"/>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+            <value>This screen governs the behavior of the weather screens. You can enable a background weather update which will run regardless of being on the weather screen, and configure how many seconds each screen will display. When you are done configuring the weather plugin, click "Finish" to continue.</value>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <!-- alows the user to select and activate the sources
+        where the weather will be fetched from -->
+    <window name="screen-setup">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Screen Setup</value>
+            </textarea>
+        </textarea>
+
+        <shape name="screen-setup_background" from="base_background_shape">
+            <area>265,200,745,397</area>
+        </shape>
+
+        <textarea name="inactivehdr" from="base_textarea">
+            <area>285,205,350,36</area>
+            <font>text_small</font>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <textarea name="activehdr" from="inactivehdr">
+            <area>650,205,350,36</area>
+            <font>text_small</font>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <buttonlist name="inactivelist" from="base_buttonlist">
+            <area>280,240,350,275</area>
+        </buttonlist>
+
+        <buttonlist name="activelist" from="base_buttonlist">
+            <area>645,240,350,275</area>
+        </buttonlist>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>266,530,743,1</area>
+        </shape>
+
+        <button name="finishbutton" from="base_button">
+            <position>565,545</position>
+            <value>Finish</value>
+        </button>
+
+        <shape name="helptext_background_bottom" from="base_background_shape">
+            <area>-15,615,1310,90</area>
+        </shape>
+        <textarea name="helptxt" from="base_textarea">
+            <area>120,615,1040,90</area>
+            <scroll direction="vertical" rate="10"/>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <!-- alows the user to set up some values 
+         of the sources that he has choosen  -->
+    <window name="source-setup">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Source Setup</value>
+            </textarea>
+        </textarea>
+
+        <shape name="source-setup_background" from="base_background_shape">
+            <area>185,340,910,257</area>
+        </shape>
+
+        <buttonlist name="srclist" from="base_buttonlist">
+            <area>200,355,350,160</area>
+        </buttonlist>
+
+        <textarea name="update_label" from="base_textarea">
+            <area>600,355,380,36</area>
+            <value>Data Retrieval Interval (minutes):</value>
+            <align>right,vcenter</align>
+        </textarea>
+        <spinbox name="update_spinbox" from="base_spinbox">
+            <position>990,355</position>
+        </spinbox>
+
+        <textarea name="retrieve_label" from="base_textarea">
+            <area>600,395,380,36</area>
+            <value>Source Update Timeout (seconds):</value>
+            <align>right,vcenter</align>
+        </textarea>
+        <spinbox name="retrieve_spinbox" from="base_spinbox">
+            <position>990,395</position>
+        </spinbox>
+
+        <textarea name="srcinfo" from="base_textarea">
+            <area>600,435,475,90</area>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+            <align>right,vcenter</align>
+        </textarea>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>186,530,908,1</area>
+        </shape>
+
+        <button name="finishbutton" from="base_button">
+            <position>565,545</position>
+            <value>Finish</value>
+        </button>
+
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,615</position>
+        </group>
+
+    </window>
+
+
+
+
+
+
+    <!-- allows the user to search for the nearest city
+        that provides weather information source -->
+    <window name="setup-location">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Weather settings</value>
+            </textarea>
+        </textarea>
+
+        <shape name="setup-location_background" from="base_background_shape">
+            <area>320,105,650,495</area>
+        </shape>
+
+        <textarea name="loc-edit_label" from="base_textarea">
+            <area>335,120,180,36</area>
+            <value>Enter Location:</value>
+            <align>right,vcenter</align>
+        </textarea>
+
+        <textedit name="loc-edit" from="base_textedit">
+            <position>525,120</position>
+        </textedit>
+        
+        <button name="searchbtn" from="base_searchbutton">
+            <position>917,120</position>
+        </button>
+
+        <shape name="search_separator" from="base_background_shape">
+            <area>321,170,648,1</area>
+        </shape>
+
+        <!-- list with the search results -->
+        <buttonlist name="results" from="base_buttonlist">
+            <area>335,185,620,355</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,620,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active" />
+                <state name="selectedactive">
+                    <area>0,0,620,36</area>
+                </state>
+                <state name="selectedinactive">
+                    <area>0,0,620,36</area>
+                </state>
+            </statetype>
+        </buttonlist>
+
+        <shape name="result_separator" from="base_background_shape">
+            <area>321,555,648,1</area>
+        </shape>
+
+        <textarea name="numresults" from="base_textarea">
+            <area>335,560,300,36</area>
+        </textarea>
+
+        <textarea name="source" from="base_textarea">
+            <area>650,560,300,36</area>
+            <cutdown>yes</cutdown>
+            <align>right,vcenter</align>
+        </textarea>
+
+        <shape name="helptext_background_bottom" from="base_background_shape">
+            <area>-15,615,1310,90</area>
+        </shape>
+        <textarea name="helptext" from="base_textarea">
+            <area>120,615,1040,90</area>
+            <scroll direction="vertical" rate="10"/>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+            <value>Enter your current location, nearest large town or city. In some countries postal codes are also supported.</value>
+        </textarea>
+
+    </window>
+
+</mythuitheme>

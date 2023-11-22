@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <!-- shows the news with its short description -->
+    <window name="news">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>News</value>
+            </textarea>
+        </textarea>
+
+        <shape name="newslist_background" from="base_background_shape">
+            <area>120,50,1040,290</area>
+        </shape>
+
+        <textarea name="nosites" from="base_textarea">
+            <area>335,65,610,440</area>
+            <align>allcenter</align>
+            <value>You Haven't Specified Any News Feeds.</value>
+            <multiline>yes</multiline>
+        </textarea>
+        
+        <buttonlist name="siteslist" from="base_buttonlist">
+            <area>135,65,350,290</area>
+        </buttonlist>
+
+        <!-- the buttonlist widget with a width of 480px -->
+        <buttonlist name="articleslist" from="base_buttonlist">
+            <area>495,65,650,290</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,650,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active" />
+                <state name="selectedactive">
+                    <area>0,0,650,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                        <scroll direction="horizontal" />
+                    </textarea>
+                </state>
+                <state name="selectedinactive">
+                    <area>0,0,650,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                </state>
+            </statetype>
+        </buttonlist>
+
+        <shape name="news_details_background" from="base_background_shape">
+            <area>20,395,1240,310</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>35,405,1210,36</area>
+            <font>title</font>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+        <textarea name="updated" from="base_textarea">
+            <area>35,435,900,36</area>
+        </textarea>     
+
+        <!-- optional status icons -->
+        <!-- imagetype name="thumbnail"
+             imagetype name="download"
+             imagetype name="enclosures"
+             imagetype name="ispodcast" -->
+
+        <shape name="description_separator" from="base_background_shape">
+            <area>21,472,1238,1</area>
+        </shape>
+
+        <textarea name="description" from="base_textarea">
+            <area>35,482,1210,208</area>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+            <align>left,bottom</align>
+        </textarea>
+
+    </window>
+
+
+
+
+
+    <!-- Allows the user to add a new news site -->
+    <window name="editor">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Edit News</value>
+            </textarea>
+        </textarea>
+
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="editor_background" from="base_background_shape_dark">
+            <area>300,185,670,330</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>315,195,640,60</area>
+            <align>allcenter</align>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>301,265,668,1</area>
+        </shape>
+
+        <textarea name="namelabel" from="base_textarea">
+            <area>315,280,150,36</area>
+            <align>right,vcenter</align>
+            <value>Name:</value>
+        </textarea>
+        <textarea name="urllabel" from="namelabel">
+            <position>315,320</position>
+            <value>URL:</value>
+        </textarea>
+        <textarea name="iconlabel" from="namelabel">
+            <position>315,360</position>
+            <value>Icon:</value>
+        </textarea>
+        <textarea name="podcast_check_label" from="namelabel">
+            <position>315,400</position>
+            <value>Podcast:</value>
+        </textarea>
+
+        <textedit name="name" from="base_textedit_wide">
+            <position>475,280</position>
+        </textedit>
+        <textedit name="url" from="base_textedit_wide">
+            <position>475,320</position>
+        </textedit>     
+        <textedit name="icon" from="base_textedit_wide">
+            <position>475,360</position>
+        </textedit>
+        <checkbox name="podcast_check" from="base_checkbox">
+            <position>475,400</position>
+        </checkbox>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>301,450,668,1</area>
+        </shape>
+
+        <button name="ok" from="base_button">
+            <position>485,465</position>
+            <value>Ok</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>650,465</position>
+            <value>Cancel</value>
+        </button>
+
+    </window>
+
+
+
+
+
+    <!-- This is the configuration window for mythnews -->
+    <window name="config">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>News Config</value>
+            </textarea>
+        </textarea>
+
+        <shape name="newsconfig_background" from="base_background_shape">
+            <area>195,90,870,565</area>
+        </shape>
+
+        <textarea name="category_label" from="base_textarea">
+            <area>212,100,350,20</area>
+            <value>Available Categories</value>
+            <font>text_small</font>
+        </textarea>
+
+        <textarea name="sites_label" from="base_textarea">
+            <area>572,100,350,20</area>
+            <value>Available Sites</value>
+            <font>text_small</font>
+        </textarea>
+
+        <buttonlist name="category" from="base_buttonlist">
+            <area>210,125,350,512</area>
+        </buttonlist>
+
+        <buttonlist name="sites" from="base_buttonlist">
+            <area>570,125,480,512</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,480,36</area>
+                </state>
+                <state name="inactive">
+                    <area>0,0,480,36</area>
+                </state>
+                <state name="selectedactive">
+                    <area>0,0,480,36</area>
+                </state>
+                <state name="selectedinactive">
+                    <area>0,0,480,36</area>
+                </state>
+            </statetype>
+        </buttonlist>
+
+    </window>
+
+</mythuitheme>

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <!-- TODO processing and jobstate icons -->
+    <!-- shows a list of available recording groups and its recordings
+        together with some detail information about the recording -->
+    <window name="watchrecordings" include="base_recording.xml">
+
+        <!-- background, name of screen and the clock -->
+        <imagetype name="fanart" from="base_background" />
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Watch Recordings</value>
+            </textarea>
+        </textarea>
+
+        <!-- this is the background around the recording information -->
+        <shape name="group_background" from="base_background_shape">
+            <area>20,50,1240,390</area>
+        </shape>
+
+        <!-- text that is displayed when there are no recordings availble -->
+        <textarea name="norecordings">
+            <area>220,50,840,390</area>
+            <multiline>yes</multiline>
+            <align>allcenter</align>
+        </textarea>
+
+        <!-- the selection of available recording groups -->
+        <buttonlist name="groups" from="base_buttonlist">
+            <area>35,65,350,355</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,350,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                        <scroll direction="horizontal" rate="35" />
+                    </textarea>
+                </state>
+                <state name="inactive" from="active" />
+                <state name="selectedactive" from="active">
+                    <area>0,0,350,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,350,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+        </buttonlist>
+
+        <!-- the selection of the available recordings in the group -->
+        <buttonlist name="recordings" from="base_buttonlist">
+            <area>395,65,850,355</area>            
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,850,36</area>
+                    <textarea name="titlesubtitle" from="base_textarea">
+                        <area>8,0,512,36</area>
+                        <scroll direction="horizontal" />
+                    </textarea>
+                    <textarea name="00x00" from="base_textarea">
+                        <area>530,5,60,30</area>
+                        <align>right,vcenter</align>
+                    </textarea>
+                    <textarea name="shortstartdate" from="base_textarea">
+                        <area>600,0,80,36</area>
+                        <align>right,vcenter</align>
+                    </textarea>
+                    <textarea name="starttime" from="base_textarea">
+                        <area>690,0,80,36</area>
+                        <align>allcenter</align>
+                    </textarea>                    
+                    <imagetype name="no_jobstate" from="base_icon_inactive">
+                        <filename>images/icons/processing.png</filename>
+                        <area>778,3,30,30</area>
+                    </imagetype>
+
+                    <statetype name="jobstate">
+                        <position>775,0</position>
+                        <state name="recording">
+                            <imagetype name="background" from="base_icon_selected">
+                                <filename>images/icons/recording.png</filename>
+                                <area>3,3,30,30</area>
+                            </imagetype>
+                            <imagetype name="status" from="base_icon_selected">
+                                <filename>images/icons/recording.png</filename>
+                                <area>8,8,20,21</area>
+                                <alphapulse min="100" max="220" change="2"/>
+                            </imagetype>
+                        </state>
+                        <state name="transcoding">
+                            <imagetype name="status" from="base_icon_selected">
+                                <filename>images/icons/transcoded.png</filename>
+                                <area>3,3,30,30</area>
+                            </imagetype>
+                        </state>
+                        <state name="commflagging">
+                            <imagetype name="status" from="base_icon_selected">
+                                <filename>images/icons/commflagged.png</filename>
+                                <area>3,3,30,30</area>
+                            </imagetype>
+                        </state>
+                    </statetype>
+
+                    <statetype name="watched">
+                        <position>810,0</position>
+                        <state name="no">
+                            <imagetype name="watchedoff" from="base_icon_inactive">
+                                <area>3,3,30,30</area>
+                                <filename>images/icons/selected.png</filename>
+                            </imagetype>
+                        </state>
+                        <state name="yes">
+                            <imagetype name="watched" from="base_icon_selected">
+                                <area>3,3,30,30</area>
+                                <filename>images/icons/selected.png</filename>
+                            </imagetype>
+                        </state>
+                    </statetype>
+<!--
+                    optional statetype status with states
+                    disabled, error, warning, normal, running, marked
+-->
+                </state>
+
+                <state name="inactive" from="active" />
+                <state name="selectedactive" from="active">
+                    <area>0,0,850,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,850,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                    <textarea name="buttontext">
+                        <font>text_inactive</font>
+                    </textarea>
+                </state>
+            </statetype>
+        </buttonlist>
+
+        <!-- The preview image and the details to the selected recording -->
+        <group name="recording_details_group" from="base_recording_details_group">
+            <position>20,460</position>
+        </group>
+
+    </window>
+
+
+
+    
+
+    <!-- The Change View popup.
+        Shows a list of icons that describe the status of a recording  -->
+    <window name="changeview">
+
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="dialog_background" from="base_background_shape_dark">
+            <area>420,130,450,455</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>435,140,420,60</area>
+            <value>Change View</value>
+            <align>allcenter</align>
+            <scroll direction="vertical" rate="10" />
+        </textarea>
+        <shape name="title_separator" from="base_background_shape">
+            <area>421,210,448,1</area>
+        </shape>
+
+        <checkbox name="titles" from="base_checkbox">
+            <position>435,225</position>
+        </checkbox>
+        <textarea name="titlelabel" from="base_textarea">
+            <area>480,225,375,36</area>
+            <value>Show Titles</value>
+            <cutdown>yes</cutdown>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <checkbox name="categories" from="base_checkbox">
+            <position>435,265</position>
+        </checkbox>
+        <textarea name="catlabel" from="titlelabel">
+            <position>480,265</position>
+            <value>Show Categories</value>
+        </textarea>
+
+        <checkbox name="recgroups" from="base_checkbox">
+            <position>435,305</position>
+        </checkbox>
+        <textarea name="grouplabel" from="titlelabel">
+            <position>480,305</position>
+            <value>Show Recording Groups</value>
+        </textarea>
+
+        <checkbox name="watchlist" from="base_checkbox">
+            <position>435,345</position>
+        </checkbox>
+        <textarea name="watchlabel" from="titlelabel">
+            <position>480,345</position>
+            <value>Show Watch List</value>
+        </textarea>
+
+        <checkbox name="searches" from="base_checkbox">
+            <position>435,385</position>
+        </checkbox>
+        <textarea name="searchlabel" from="titlelabel">
+            <position>480,385</position>
+            <value>Show Searches</value>
+        </textarea>
+
+        <checkbox name="livetv" from="base_checkbox">
+            <position>435,425</position>
+        </checkbox>
+        <textarea name="livelabel" from="titlelabel">
+            <position>480,425</position>
+            <value>Show LiveTV</value>
+        </textarea>
+
+        <checkbox name="watched" from="base_checkbox">
+            <position>435,465</position>
+        </checkbox>
+        <textarea name="watchedlabel" from="titlelabel">
+            <position>480,465</position>
+            <value>Show Watched Programs</value>
+        </textarea>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>421,515,448,1</area>
+        </shape>
+
+        <button name="save" from="base_button">
+            <position>560,530</position>
+            <value>Save</value>
+        </button>
+
+    </window>
+
+
+
+
+
+    <!-- The Group selector popup.
+        Allows the user to change the password -->
+    <window name="passwordchanger">
+
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="dialog_background" from="base_background_shape_dark">
+            <area>340,225,590,252</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>355,235,560,60</area>
+            <value>Change Password</value>
+            <align>allcenter</align>
+            <scroll direction="vertical" rate="10" />
+        </textarea>
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>341,305,588,1</area>
+        </shape>
+
+        <textarea name="oldlabel" from="base_textarea">
+            <area>360,320,170,36</area>
+            <align>right,vcenter</align>
+            <value>Old Password:</value>
+        </textarea>
+        <textarea name="newlabel" from="base_textarea">
+            <area>360,360,170,36</area>
+            <align>right,vcenter</align>
+            <value>New Password:</value>
+        </textarea>
+
+        <textedit name="oldpassword" from="base_textedit">
+            <position>540,320</position>
+        </textedit>
+        <textedit name="newpassword" from="base_textedit">
+            <position>540,360</position>
+        </textedit>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>341,410,588,1</area>
+        </shape>
+
+        <button name="ok" from="base_button">
+            <position>560,425</position>
+            <value>Ok</value>
+        </button>
+
+    </window>
+
+
+
+
+
+    <!-- The Group selector popup.
+        Shows a list of available groups that can be preselected -->
+    <window name="groupselector">
+        
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="dialog_background" from="base_background_shape_dark">
+            <area>450,130,380,385</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>465,140,350,60</area>
+            <value>Change Groups</value>
+            <align>allcenter</align>
+            <scroll direction="vertical" rate="10" />
+        </textarea>
+        <shape name="title_separator" from="base_background_shape">
+            <area>451,210,378,1</area>
+        </shape>
+
+        <!-- the list of the available groups -->
+        <buttonlist name="groups" from="base_buttonlist">
+            <area>465,225,350,275</area>
+        </buttonlist>
+
+    </window>
+
+
+
+
+
+    <!-- The Help popup which shows a list of icons 
+         that describe the status of a recording  -->
+    <window name="iconhelp">
+
+        <shape name="darken_background" from="base_darken_background" />
+
+        <shape name="dialog_background" from="base_background_shape_dark">
+            <area>450,130,380,388</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>465,140,350,60</area>
+            <value>Status Icons</value>
+            <align>allcenter</align>
+            <scroll direction="vertical" rate="10" />
+        </textarea>
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>451,210,378,1</area>
+        </shape>
+
+        <!-- the list of the available icons with their description -->
+        <buttonlist name="iconlist" from="base_buttonlist">
+            <area>465,225,350,275</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,350,36</area>
+                    <statetype name="icons">
+
+                        <state name="commflagged">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/commflagged.png</filename>
+                                <area>3,2,33,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="cutlist">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/cutlist.png</filename>
+                                <area>3,2,33,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="autoexpire">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/autoexpire.png</filename>
+                                <area>3,2,33,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="processing">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/processing.png</filename>
+                                <area>3,2,33,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="bookmark">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/bookmark.png</filename>
+                                <area>3,2,33,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="playlist">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/playlist.png</filename>
+                                <area>3,2,33,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="mono">                            
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/audio/dolby_1.0.png</filename>
+                                <area>6,5,78,26</area>
+                            </imagetype>
+                        </state>
+                        <state name="stereo">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/audio/dolby_2.0.png</filename>
+                                <area>6,5,78,26</area>
+                            </imagetype>
+                        </state>
+                        <state name="surround">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/audio/dolby_5.1.png</filename>
+                                <area>6,5,78,26</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="dolby">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/audio/dolby_7.1.png</filename>
+                                <area>6,5,78,26</area>
+                            </imagetype>
+                        </state>
+                        <state name="cc">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/subtitles/cc.png</filename>
+                                <area>6,2,33,32</area>
+                            </imagetype>
+                        </state>
+                        <state name="subtitles">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/subtitles/subs.png</filename>
+                                <area>6,2,33,32</area>
+                            </imagetype>
+                        </state>
+                        <state name="onscreensub">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/subtitles/osd.png</filename>
+                                <area>6,2,33,32</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="hdtv">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/video/hdtv.png</filename>
+                                <area>6,2,38,32</area>
+                            </imagetype>
+                        </state>
+                        <state name="hd1080">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/video/hdtv_1080.png</filename>
+                                <area>6,2,38,32</area>
+                            </imagetype>
+                        </state>
+                        <state name="hd720">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/video/hdtv_720.png</filename>
+                                <area>6,2,38,32</area>
+                            </imagetype>
+                        </state>
+                        <state name="avchd">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/video/hdtv_h264.png</filename>
+                                <area>6,2,38,32</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="widescreen">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/video/hdtv_wide.png</filename>
+                                <area>6,2,41,33</area>
+                            </imagetype>
+                        </state>
+
+                        <state name="watched">
+                            <imagetype name="statusimage" from="base_icon_selected">
+                                <filename>images/icons/selected.png</filename>
+                                <area>9,2,33,33</area>
+                            </imagetype>
+                        </state>
+                    </statetype>
+
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>100,0,240,36</area>
+                        <multiline>no</multiline>
+                        <scroll direction="horizontal" rate="35" />
+                    </textarea>
+                </state>
+
+                <state name="inactive" from="active" />
+
+                <state name="selectedactive" from="active">
+                    <area>0,0,350,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+
+                <state name="selectedinactive" from="active">
+                    <area>0,0,350,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+
+            </statetype>
+        </buttonlist>
+
+    </window>
+
+
+
+
+
+    <!-- The Edit Recording Title / Subtitle window -->
+    <window name="editmetadata">
+
+        <!-- background, name of screen -->
+        <imagetype name="background" from="base_background" />
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Edit Recording Metadata</value>
+            </textarea>
+        </textarea>
+        
+        <shape name="editmetadata_background" from="base_background_shape">
+            <area>340,155,600,442</area>
+        </shape>
+
+        <textarea name="titlelabel" from="base_textarea">
+            <area>355,170,185,36</area>
+            <align>right,vcenter</align>
+            <value>Title:</value>
+        </textarea>
+
+        <textarea name="subtitlelabel" from="titlelabel">
+            <position>355,210</position>
+            <value>Subtitle:</value>
+        </textarea>
+
+        <textarea name="inetreflabel" from="titlelabel">
+            <position>355,250</position>
+            <value>Inetref:</value>
+        </textarea>
+
+        <textarea name="seasonlabel" from="titlelabel">
+            <position>355,290</position>
+            <value>Season:</value>
+        </textarea>        
+
+        <textarea name="episodelabel" from="titlelabel">
+            <position>355,330</position>
+            <value>Episode:</value>
+        </textarea>
+
+        <textarea name="descriptionlabel" from="titlelabel">
+            <position>355,370</position>
+            <value>Description:</value>
+        </textarea>
+        
+        <textedit name="title" from="base_textedit">
+            <position>550,170</position>
+        </textedit>
+        
+        <textedit name="subtitle" from="base_textedit">
+            <position>550,210</position>
+        </textedit>
+        
+        <textedit name="inetref" from="base_textedit">
+            <position>550,250</position>
+        </textedit>
+        
+        <spinbox name="season" from="base_spinbox">
+            <position>550,290</position>
+        </spinbox>
+        
+        <spinbox name="episode" from="base_spinbox">
+            <position>550,330</position>
+        </spinbox>
+
+        <textedit name="description" from="base_textedit">
+            <area>550,370,375,145</area>
+            <statetype name="background">
+                <state name="active">
+                    <area>0,0,375,145</area>
+                </state>
+                <state name="selected">
+                    <area>0,0,375,145</area>
+                </state>
+                <state name="inactive">
+                    <area>0,0,375,145</area>
+                </state>
+            </statetype>
+            <imagetype name="cursor">
+                <shape name="cursor_shape">
+                    <area>0,2,2,20</area>
+                    <type>box</type>
+                    <fill color="#FFFFFF" alpha="240" />
+                </shape>
+            </imagetype>
+            <textarea name="text" from="base_textarea">
+                <area>8,10,100%-16,139</area>
+                <align>top,left</align>
+                <multiline>true</multiline>
+            </textarea>
+        </textedit>
+        
+        <shape name="button_separator" from="base_background_shape">
+            <area>341,530,598,1</area>
+        </shape>
+
+        <button name="ok" from="base_button">
+            <position>565,545</position>
+            <value>OK</value>
+        </button>
+        
+    </window>
+
+</mythuitheme>

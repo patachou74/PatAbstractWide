@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "../mythuitheme.dtd">
+<mythuitheme>
+
+
+    <!-- Shows a large version of the video cover with the rating below it -->
+    <group name="base_video_large_cover_group">
+
+        <imagetype name="coverart_background_image">
+            <area>20,20,245,355</area>
+            <mask>images/media/movie_cover_mask.png</mask>
+            <filename>images/media/movie_bg.png</filename>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="coverart">
+            <area>20,20,245,355</area>
+            <mask>images/media/movie_cover_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="coverart_border">
+            <area>20,20,245,355</area>
+            <filename>images/media/movie_cover_border.png</filename>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+
+    </group>
+
+    <!-- Shows all information about the selected video without a border
+         This is usually used in the itemdetailpopup window -->
+    <group name="base_video_detailed_description_group">
+        
+        <textarea name="title" from="base_textarea">
+            <area>15,15,350,30</area>
+            <font>title</font>
+            <cutdown>yes</cutdown>
+        </textarea>
+        <textarea name="subtitle" from="base_textarea">
+            <area>15,45,260,30</area>
+            <cutdown>yes</cutdown>
+        </textarea>
+
+        <imagetype name="userratingstate_background" from="base_rating_background">
+            <position>275,52</position>
+        </imagetype>
+        <statetype name="userratingstate" from="base_rating">
+            <position>275,52</position>
+        </statetype>
+
+        <shape name="top_separator" from="base_background_shape">
+            <area>1,80,378,1</area>
+        </shape>
+
+        <textarea name="description" from="base_textarea">
+            <area>15,95,350,285</area>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+            <align>right,top</align>
+        </textarea>        
+
+        <shape name="left_separator" from="base_background_shape">
+            <area>380,1,1,393</area>
+        </shape>
+
+         <!-- shows the description to the different details -->
+        <textarea name="director_label" from="base_textarea" depends="director">
+            <area>395,15,130,30</area>
+            <align>left,vcenter</align>
+            <value>Director:</value>
+        </textarea>
+        <textarea name="cast_label" from="director_label" depends="cast">
+            <position>395,50</position>
+            <value>Cast:</value>
+        </textarea>
+        <textarea name="genre_label" from="director_label" depends="genres">
+            <position>395,150</position>
+            <value>Genre:</value>
+        </textarea>
+        <textarea name="year_label" from="director_label" depends="year">
+            <position>395,255</position>
+            <value>Year:</value>
+        </textarea>
+        <textarea name="length_label" from="director_label" depends="length">
+            <position>395,285</position>
+            <value>Runtime:</value>
+        </textarea>
+        <textarea name="rating_label" from="director_label" depends="rating">
+            <area>395,320,200,30</area>
+            <value>Rating:</value>
+        </textarea>
+        <textarea name="videolevel_label" from="director_label">
+            <area>395,350,200,30</area>
+            <value>Parental Level:</value>
+        </textarea>
+
+        <!-- shows the values to the different details -->
+        <textarea name="director" from="base_textarea">
+            <area>535,15,170,30</area>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+        <textarea name="cast" from="base_textarea">
+            <area>535,55,170,85</area>
+            <align>left,top</align>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+        <textarea name="genres" from="base_textarea">
+            <area>535,155,170,65</area>
+            <scroll direction="vertical" rate="10"/>
+        </textarea>
+        <textarea name="season" from="director">
+            <area>395,225,160,30</area>
+            <template>Season: %1</template>
+        </textarea>
+        <textarea name="episode" from="director">
+            <area>535,225,160,30</area>
+            <template>Episode: %1</template>
+        </textarea>
+        <textarea name="year" from="director">
+            <position>535,255</position>
+        </textarea>
+        <textarea name="length" from="director">
+            <position>535,285</position>
+        </textarea>
+        <textarea name="rating" from="base_textarea">
+             <area>610,325,70,30</area>
+        </textarea>
+        <imagetype name="videolevel_background" from="base_parentallevel_background" depends="videolevel">
+            <position>610,356</position>
+        </imagetype>
+        <statetype name="videolevel" from="base_parentallevel">
+            <position>610,356</position>
+        </statetype>
+
+    </group>
+        
+        
+        
+        
+        
+    <!-- Shows the title and the description of the selected video -->
+    <group name="base_video_description_group">
+
+        <shape name="video_description_background" from="base_background_shape">
+            <area>0,0,720,210</area>
+        </shape>
+
+        <textarea name="title" from="base_textarea">
+            <area>15,15,690,30</area>
+            <multiline>no</multiline>
+            <cutdown>yes</cutdown>
+            <font>title</font>
+        </textarea>
+        <textarea name="subtitle" from="base_textarea">
+            <area>15,45,500,30</area>
+            <multiline>no</multiline>
+            <cutdown>yes</cutdown>
+        </textarea>
+
+        <imagetype name="userratingstate_background" from="base_rating_background">
+            <position>615,50</position>
+        </imagetype>
+        <statetype name="userratingstate" from="base_rating">
+            <position>615,50</position>
+        </statetype>
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>1,80,718,1</area>
+        </shape>
+
+        <textarea name="description" from="base_textarea">
+            <area>15,92,690,105</area>
+            <multiline>yes</multiline>
+            <scroll direction="vertical" rate="10"/>
+            <align>left,top</align>
+        </textarea>
+
+    </group>
+
+
+
+
+
+    <!-- Shows more details about the selected video -->
+    <group name="base_video_details_group">
+
+        <shape name="video_details_background" from="base_background_shape">
+            <area>0,0,500,210</area>
+        </shape>
+
+        <textarea name="position" from="base_textarea">
+            <area>365,15,120,30</area>
+            <align>right,vcenter</align>
+        </textarea>
+        
+        <!-- shows the description to the different details -->
+        <textarea name="director_label" from="base_textarea" depends="director">
+            <area>0,15,140,30</area>
+            <align>right,vcenter</align>
+            <value>Director:</value>
+        </textarea>
+        <textarea name="cast_label" from="director_label" depends="cast">
+            <position>0,45</position>
+            <value>Cast:</value>
+        </textarea>
+        <textarea name="season_label" from="director_label" depends="season">
+            <position>0,105</position>
+            <value>Season:</value>
+        </textarea>
+        <textarea name="episode_label" from="director_label" depends="episode">
+            <position>130,105</position>
+            <value>Episode:</value>
+        </textarea>
+        <textarea name="year_label" from="director_label" depends="year">
+            <position>260,105</position>
+            <value>Year:</value>
+        </textarea>
+        <textarea name="length_label" from="director_label" depends="length">
+            <position>0,135</position>
+            <value>Runtime:</value>
+        </textarea>
+        <textarea name="rating_label" from="director_label" depends="rating">
+            <position>260,135</position>
+            <value>Rating:</value>
+        </textarea>
+        <textarea name="videolevel_label" from="director_label">
+            <area>180,165,220,30</area>
+            <value>Parental Level:</value>
+        </textarea>
+        
+        <!-- shows the values to the different details -->
+        <textarea name="director" from="base_textarea">
+            <area>145,15,180,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+        <textarea name="cast" from="base_textarea">
+            <area>145,50,335,55</area>
+            <align>left,top</align>
+            <multiline>yes</multiline>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+        <textarea name="season" from="director">
+            <position>145,105</position>
+        </textarea>
+        <textarea name="episode" from="director">
+            <position>275,105</position>
+        </textarea>
+        <textarea name="year" from="director">
+            <position>405,105</position>
+        </textarea>
+        <textarea name="length" from="director">
+            <position>145,135</position>
+        </textarea>
+        <textarea name="rating" from="base_textarea">
+             <area>405,135,70,30</area>
+        </textarea>
+        <imagetype name="videolevel_background" from="base_parentallevel_background">
+            <position>405,170</position>
+        </imagetype>
+        <statetype name="videolevel" from="base_parentallevel">
+            <position>405,170</position>
+        </statetype>
+
+    </group>
+    
+    
+    
+    
+    
+    <!-- the list of the available videos -->
+    <group name="base_video_gallery_list_group">
+
+        <buttonlist name="videos">
+            <area>0,0,1240,400</area>
+            <layout>grid</layout>
+            <spacing>1</spacing>
+            <wrapstyle>flowing</wrapstyle>
+            <buttonarea>0,0,100%,100%</buttonarea>
+
+            <statetype name="buttonitem">
+                <state name="active">
+
+                    <imagetype name="background_image">
+                        <area>0,0,133,192</area>
+                        <mask>images/media/movie_item_nfmask.png</mask>
+                        <filename>images/media/movie_bg.png</filename>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>15,15,100,24</area>
+                    </textarea>
+                    
+                    <!-- this is the actual cover image that will be shown if its
+                        available, otherwise only the background image is visible -->
+                    <imagetype name="buttonimage">
+                        <area>0,0,133,192</area>
+                        <mask>images/media/movie_item_nfmask.png</mask>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+
+                    <!-- marks the video as watched -->
+                    <statetype name="watchedstate">
+                        <position>79,4</position>
+                        <state name="yes">
+                            <imagetype name="watchedimage">
+                                <area>0,0,50,50</area>
+                                <filename>images/media/movie_watched.png</filename>
+                            </imagetype>
+                        </state>
+                        <state name="no">
+                            <imagetype name="unwatchedimage">
+                                <area>0,0,50,50</area>
+                                <filename>images/media/movie_unwatched.png</filename>
+                            </imagetype>
+                        </state>
+                    </statetype>
+                    
+                    <!-- the node is a folder and it is currently not selected -->
+                    <statetype name="nodetype">
+                        <position>0,0</position>
+                        <state name="subfolder">
+                            <imagetype name="node_icon">
+                                <area>12,160,24,24</area>
+                                <filename>images/icons/folder.png</filename>
+                                <preserveaspect>yes</preserveaspect>
+                            </imagetype>
+                        </state>
+                        <state name="upfolder">
+                            <imagetype name="node_icon">
+                                <area>12,160,24,24</area>
+                                <filename>images/icons/folder_up.png</filename>
+                                <preserveaspect>yes</preserveaspect>
+                            </imagetype>
+                        </state>
+                    </statetype>
+                    
+                    <imagetype name="background_image_border">
+                        <area>0,0,133,192</area>
+                        <filename>images/media/movie_item_nfborder.png</filename>
+                    </imagetype>
+                    
+                    <!-- shows how many videos / directories are in this directory -->
+                    <textarea name="childcount" from="base_textarea">
+                        <area>42,163,60,24</area>
+                    </textarea>
+                </state>
+
+                <!-- These two states are not used -->
+                <state name="inactive" from="active"/>
+                <state name="selectedinactive" from="active"/>
+                    
+                <state name="selectedactive">
+                    <area>-26,-37,133,192</area>
+                    
+                    <imagetype name="background_image">
+                        <area>0,0,185,267</area>
+                        <mask>images/media/movie_item_fmask.png</mask>
+                        <filename>images/media/movie_bg.png</filename>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>20,20,150,24</area>
+                    </textarea>
+                    
+                    <!-- this is the actual cover image that will be shown if its
+                        available, otherwise only the background image is visible -->
+                    <imagetype name="buttonimage">
+                        <area>0,0,185,267</area>
+                        <mask>images/media/movie_item_fmask.png</mask>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+
+                    <!-- marks the video as watched -->
+                    <statetype name="watchedstate">
+                        <position>111,9</position>
+                        <state name="yes">
+                            <imagetype name="watchedimage">
+                                <area>0,0,65,65</area>
+                                <filename>images/media/movie_watched.png</filename>
+                            </imagetype>
+                        </state>
+                        <state name="no">
+                            <imagetype name="unwatchedimage">
+                                <area>0,0,65,65</area>
+                                <filename>images/media/movie_unwatched.png</filename>
+                            </imagetype>
+                        </state>
+                    </statetype>
+
+                    <!-- the node is a folder and it is currently selected -->
+                    <statetype name="nodetype">
+                        <position>0,0</position>
+                        <state name="subfolder">
+                            <imagetype name="node_icon">
+                                <area>16,225,30,30</area>
+                                <filename>images/icons/folder_selected.png</filename>
+                                <preserveaspect>yes</preserveaspect>
+                            </imagetype>
+                        </state>
+                        <state name="upfolder">
+                            <imagetype name="node_icon">
+                                <area>16,225,30,30</area>
+                                <filename>images/icons/folder_up_selected.png</filename>
+                                <preserveaspect>yes</preserveaspect>
+                            </imagetype>
+                        </state>
+                    </statetype>
+
+                    <imagetype name="background_image_border">
+                        <area>0,0,185,267</area>
+                        <filename>images/media/movie_item_fborder.png</filename>
+                    </imagetype>
+                    
+                    <!-- shows how many videos / directories are in this directory -->
+                    <textarea name="childcount" from="base_textarea">
+                        <area>52,230,66,24</area>
+                    </textarea>
+                </state>
+            </statetype>
+        </buttonlist>
+
+    </group>
+    
+</mythuitheme>

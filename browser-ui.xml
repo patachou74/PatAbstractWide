@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <!-- shows the selected bookmark or url in a browser window -->
+    <window name="browser">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Webbrowser</value>
+            </textarea>
+        </textarea>
+
+        <buttonlist name="pagelist" from="base_selector_very_wide">
+            <area>600,5,650,36</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <imagetype name="favicon">
+                        <area>4,4,28,28</area>
+                    </imagetype>
+                    <statetype name="loadingstate">
+                        <position>0,0</position>
+                        <state name="loading">
+                            <imagetype name="animation" from="base_icon_selected">
+                                <filename>images/icons/processing.png</filename>
+                                <area>4,4,28,28</area>
+                                <alphapulse min="100" max="220" change="2"/>
+                            </imagetype>
+                        </state>
+                    </statetype>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>45,0,100%-53,36</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active"/>
+                <state name="selectedactive" from="active">
+                    <area>0,0,650,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive"/>
+                </state>
+                <state name="selectedinactive" from="active"/>
+            </statetype>
+
+        </buttonlist>
+
+        <webbrowser name="webbrowser" from="base_webbrowser">
+            <area>15,45,1265,675</area>
+            <browserarea>0,0,100%-28,100%-28</browserarea>
+        </webbrowser>
+
+        <!-- additonally an optional progressbar 
+             or textarea "status" can be shown -->
+
+    </window>
+
+
+
+
+
+    <!-- presents the user with the available bookmarksm he can choose from -->
+    <window name="bookmarkmanager">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Bookmarks</value>
+            </textarea>
+        </textarea>
+
+        <shape name="bookmarks_background" from="base_background_shape">
+            <area>120,130,1040,490</area>
+        </shape>
+
+        <!-- information about the columns -->
+        <textarea name="category_label" from="base_textarea">
+            <area>135,140,150,20</area>
+            <align>left,vcenter</align>
+            <font>text_small</font>
+            <value>Category</value>
+        </textarea>
+        <textarea name="name_label" from="category_label">
+            <area>500,140,150,20</area>
+            <value>Name</value>
+        </textarea>
+        <textarea name="url_label" from="category_label">
+            <area>720,140,150,20</area>
+            <value>Url</value>
+        </textarea>
+        <textarea name="homepage_label" from="category_label">
+            <area>1020,140,120,20</area>
+            <value>Homepage</value>
+            <align>right,vcenter</align>
+        </textarea>
+
+        <!-- shows the bookmark categories -->
+        <buttonlist name="grouplist" from="base_buttonlist">
+            <area>135,165,350,435</area>
+        </buttonlist>
+
+        <!-- shows the bookmark in the selected category -->
+        <buttonlist name="bookmarklist" from="base_buttonlist">
+            <area>495,165,650,435</area>
+            <statetype name="buttonitem">                
+                <state name="active">
+                    <area>0,0,650,36</area>
+                    <textarea name="name" from="base_textarea">
+                        <area>8,0,200,36</area>
+                    </textarea>
+                    <textarea name="url" from="base_textarea">
+                        <area>220,0,380,36</area>
+                    </textarea>
+                    <statetype name="buttoncheck">
+                        <area>800,0,0,0</area>
+                    </statetype>
+                    <statetype name="homepage">
+                        <state name="yes">
+                            <imagetype name="homepage" from="base_icon_selected">
+                                <area>612,3,30,30</area>
+                                <filename>images/icons/selected.png</filename>
+                            </imagetype>
+                        </state>
+                        <state name="no">
+                            <imagetype name="homepage" from="base_icon_inactive">
+                                <area>612,3,30,30</area>
+                                <filename>images/icons/selected.png</filename>
+                            </imagetype>
+                        </state>
+                    </statetype>
+                </state>
+                <state name="inactive" from="active" />
+                <state name="selectedactive" from="active">
+                    <area>0,0,650,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive"/>
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,650,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive"/>
+                </state>
+            </statetype>
+        </buttonlist>
+
+    </window>
+
+
+
+
+
+    <!-- allows the user to add a new bookmarks -->
+    <window name="bookmarkeditor">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Edit Bookmark</value>
+            </textarea>
+        </textarea>
+
+        <shape name="editor_background" from="base_background_shape">
+            <area>245,345,790,252</area>
+        </shape>
+
+        <textarea name="categorylabel" from="base_textarea">
+            <area>300,360,175,36</area>
+            <align>right,vcenter</align>
+            <value>Category:</value>
+        </textarea>
+        <textedit name="category" from="base_textedit">
+            <position>485,360</position>
+        </textedit>
+        <button name="findcategory" from="base_button">
+            <position>870,360</position>
+            <value>Find...</value>
+        </button>
+
+        <textarea name="namelabel" from="categorylabel">
+            <position>300,400</position>
+            <value>Name:</value>
+        </textarea>
+        <textedit name="name" from="base_textedit">
+            <position>485,400</position>
+        </textedit>
+
+        <textarea name="urllabel" from="categorylabel">
+            <position>300,440</position>
+            <align>right,vcenter</align>
+            <value>URL:</value>
+        </textarea>
+        <textedit name="url" from="base_textedit">
+            <position>485,440</position>
+        </textedit>
+
+        <textarea name="homepagelabel" from="categorylabel">
+            <position>300,480</position>
+            <value>Homepage:</value>
+        </textarea>
+        <checkbox name="homepage" from="base_checkbox">
+            <position>485,480</position>
+        </checkbox>
+        
+        <shape name="button_separator" from="base_background_shape">
+            <area>246,530,788,1</area>
+        </shape>
+        
+        <button name="ok" from="base_button">
+            <position>485,545</position>
+            <value>Save</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>650,545</position>
+            <value>Cancel</value>
+        </button>
+        
+        <shape name="helptext_background_bottom" from="base_background_shape">
+            <area>-5,615,1290,90</area>
+        </shape>
+        <textarea name="description" from="base_textarea">
+            <area>120,615,1040,90</area>
+            <cutdown>yes</cutdown>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+        </textarea>
+
+    </window>
+
+
+
+
+
+    <!-- allows the user to configure some mythbrowser settings -->
+    <window name="browserconfig">
+
+        <imagetype name="background" from="base_background"/>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Browser Settings</value>
+            </textarea>
+        </textarea>
+
+        <shape name="browserconfig_background" from="base_background_shape">
+            <area>285,385,710,212</area>
+        </shape>
+
+        <textarea name="commandlabel" from="base_textarea">
+            <area>300,400,295,36</area>
+            <align>right,vcenter</align>
+            <value>Browser Command:</value>
+        </textarea>
+        <textedit name="command" from="base_textedit">
+            <position>605,400</position>
+        </textedit>
+
+        <textarea name="zoomlabel" from="commandlabel">
+            <position>300,440</position>
+            <value>Text Size:</value>
+        </textarea>
+        <textedit name="zoom" from="base_textedit">
+            <position>605,440</position>
+        </textedit>
+
+        <textarea name="pluginlabel" from="commandlabel">
+            <position>300,480</position>
+            <value>Enable plugins:</value>
+        </textarea>
+        <checkbox name="enablepluginscheck" from="base_checkbox">
+            <position>605,480</position>
+        </checkbox>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>286,530,708,1</area>
+        </shape>
+        
+        <button name="ok" from="base_button">
+            <position>485,545</position>
+            <value>Save</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>650,545</position>
+            <value>Cancel</value>
+        </button>
+        
+        <shape name="helptext_background_bottom" from="base_background_shape">
+            <area>-15,612,1310,90</area>
+        </shape>
+        <textarea name="description" from="base_textarea">
+            <area>120,612,1040,90</area>
+            <cutdown>yes</cutdown>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+        </textarea>
+
+    </window>
+
+</mythuitheme>

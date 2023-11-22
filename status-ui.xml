@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <window name="status">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/watermarks/scripts.jpg</filename>
+        </imagetype>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>System Status</value>
+            </textarea>
+        </textarea>
+
+        <!-- This is the background in which the status is displayed -->
+        <shape name="status_background" from="base_background_shape">
+            <area>125,210,1040,390</area>
+        </shape>
+
+        <!-- This is the internal buttonlist that is shown on the left -->
+        <buttonlist name="category" from="base_buttonlist">
+            <area>140,225,350,355</area>
+            <triggerevent context="Global" action="ESCAPE">LEFT</triggerevent>
+        </buttonlist>
+
+        <!-- This is the internal buttonlist that is
+        shown within the roundbox that is defined above -->
+        <buttonlist name="log" from="base_buttonlist">
+            <area>500,225,650,355</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,650,36</area>
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,100%-16,36</area>
+                        <font state="disabled">text_inactive</font>
+                        <font state="error">text_error</font>
+                        <font state="warning">text_warning</font>
+                        <font state="normal">text</font>
+                        <font state="running">text</font>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active" />
+                <state name="selectedactive" from="active">
+                    <area>0,0,650,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,650,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+        </buttonlist>
+        
+        <!-- shows some information text about the current selection -->
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,615</position>
+        </group>
+
+    </window>
+
+    <window name="standbymode">
+
+        <!-- the background behind the images (black) -->
+        <shape name="background_shape" from="base_background_shape_dark">
+            <area>-2,-2,1284,724</area>
+        </shape>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Frontend in standby mode</value>
+            </textarea>
+        </textarea>
+        
+        <statetype name="backendstatus">
+            <area>730,0,480,30</area>
+            <imagetype name="header_background">
+                <area>0,-1,560,50</area>
+                <filename>images/media/header_right.png</filename>
+            </imagetype>
+            <state name="idle">
+                <textarea name="status" from="base_textarea">
+                    <area>70,0,465,30</area>
+                    <value>Backend is idle</value>
+                </textarea>
+            </state>
+            <state name="recording" from="idle">
+                <textarea name="status">
+                    <value>Backend is recording</value>
+                </textarea>
+            </state>
+            <state name="shuttingdown" from="idle">
+                <textarea name="status">
+                    <value>Backend is recording</value>
+                </textarea>
+            </state>
+            <state name="offline" from="idle">
+                <textarea name="status">
+                    <value>Backend is recording</value>
+                </textarea>
+            </state>
+        </statetype>
+
+    </window>
+
+</mythuitheme>

@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+
+    <!-- Shows the available downloaded icons in 
+        a lists where the user can select them -->
+    <window name="iconimport">
+
+        <!-- the background image -->
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Icon import</value>
+            </textarea>
+        </textarea>
+        
+        <!-- this is the background around the file browser -->
+        <shape name="iconbrowser_background" from="base_background_shape">
+            <area>210,85,840,542</area>
+        </shape>
+               
+        <!-- the search text and the input field -->
+        <textarea name="manualsearch_label" from="base_textarea">
+            <area>230,100,170,36</area>
+            <align>right,vcenter</align>
+            <cutdown>yes</cutdown>
+            <value>Search terms:</value>
+        </textarea>
+        <textedit name="manualsearch" from="base_textedit">
+            <position>410,100</position>
+        </textedit>
+
+        <button name="search" from="base_button">
+            <position>885,100</position>
+            <value>Search</value>
+        </button>
+        
+        <!-- the text with the search results -->
+        <textarea name="status_label" from="base_textarea">
+            <area>230,140,170,36</area>
+            <align>right,vcenter</align>
+            <value>Result:</value>
+        </textarea>
+        <textarea name="status" from="base_textarea">
+            <area>410,140,630,36</area>
+        </textarea>
+        
+        <!-- separates the results from the icon list -->
+        <shape name="iconbrowser_separator" from="base_background_shape">
+            <area>211,185,838,1</area>
+        </shape>
+        
+        <textarea name="name" from="base_textarea">
+            <area>365,195,550,36</area>
+            <align>allcenter</align>
+        </textarea>
+
+        <!-- the list of the available icons -->
+        <buttonlist name="icons">
+            <area>225,240,815,310</area>
+            <layout>grid</layout>
+            <spacing>3</spacing>
+            <buttonarea>0,0,100%,100%</buttonarea>
+            <statetype name="buttonitem">
+                <state name="active">
+
+                    <imagetype name="background_image">
+                        <area>0,0,133,100</area>
+                        <mask>images/media/channel_nfmask.png</mask>
+                        <filename>images/media/channel_bg.png</filename>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+
+                    <!-- The actual album name that is shown when no icon is available -->
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,117,100</area>
+                        <font>text_small</font>
+                        <multiline>yes</multiline>
+                        <scroll direction="vertical" rate="10"/>
+                        <align>allcenter</align>
+                    </textarea>
+
+                    <!-- this is the actual cover image that will be shown if its
+                        available, otherwise only the background image is visible -->
+                    <imagetype name="icon">
+                        <area>0,0,133,100</area>
+                        <mask>images/media/channel_nfmask.png</mask>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>                      
+                    
+                    <imagetype name="background_image_border">
+                        <area>0,0,133,100</area>
+                        <filename>images/media/channel_nfborder.png</filename>
+                    </imagetype>
+                </state>
+
+                <state name="inactive" from="active"/>
+
+                <state name="selectedactive">
+                    <area>-26,-19,185,138</area>
+                    
+                    <imagetype name="background_image">
+                        <area>0,0,185,138</area>
+                        <mask>images/media/channel_fmask.png</mask>
+                        <filename>images/media/channel_bg.png</filename>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,0,169,138</area>
+                        <multiline>yes</multiline>
+                        <scroll direction="vertical" rate="10"/>
+                        <align>allcenter</align>
+                    </textarea>
+
+                    <!-- this is the actual cover image that will be shown if its
+                        available, otherwise only the background image is visible -->
+                    <imagetype name="icon">
+                        <area>0,0,185,138</area>
+                        <mask>images/media/channel_fmask.png</mask>
+                        <preserveaspect>true</preserveaspect>
+                    </imagetype>
+                    
+                    <imagetype name="background_image_border">
+                        <area>1,1,183,136</area>
+                        <filename>images/media/channel_fborder.png</filename>
+                    </imagetype>
+                </state>
+
+                <state name="selectedinactive" from="active"/>
+            </statetype>
+        </buttonlist>
+                
+        <shape name="button_separator" from="base_background_shape">
+            <area>211,560,838,1</area>
+        </shape>
+
+        <button name="skip" from="base_button">
+            <position>565,575</position>
+            <value>Cancel</value>
+        </button>
+
+    </window>
+
+
+    
+    
+    
+    
+    <!-- Shows the available channels in a lists where
+        the user can select them and download the logos, edit them,... -->
+    <window name="channeloverview">
+
+        <!-- the background image -->
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Channel Editor</value>
+            </textarea>
+        </textarea>
+
+        <shape name="channel_background" from="base_background_shape">
+            <area>400,70,480,420</area>
+        </shape>
+
+        <buttonlist name="channels" from="base_buttonlist">
+            <area>415,85,450,388</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,450,52</area>
+
+                    <shape name="icon_background" from="base_background_shape">
+                        <area>5,5,55,42</area>
+                        <cornerradius>0</cornerradius>
+                    </shape>
+                    <imagetype name="icon">
+                        <area>6,6,53,40</area>
+                    </imagetype>
+
+                    <textarea name="channum" from="base_textarea">
+                        <area>70,2,70,30</area>
+                        <align>right,vcenter</align>
+                        <template>%1 -</template>
+                    </textarea>
+                    <textarea name="name" from="base_textarea">
+                        <area>150,2,185,30</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                    <textarea name="sourcename" from="base_textarea">
+                        <area>150,27,185,20</area>
+                        <font>text_small</font>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+
+                </state>
+
+                <state name="inactive" from="active" />
+
+                <state name="selectedactive" from="active">
+                    <area>0,0,450,52</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+
+                <state name="selectedinactive" from="active">
+                    <area>0,0,450,52</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+        </buttonlist>
+
+        <shape name="channeloptions_background" from="base_background_shape">
+            <area>135,515,1010,172</area>
+        </shape>
+
+        <textarea name="sort_label" from="base_textarea">
+            <area>100,530,220,36</area>
+            <value>Sort Mode:</value>
+            <align>right,vcenter</align>
+        </textarea>
+        <textarea name="source_label" from="base_textarea">
+            <area>100,570,220,36</area>
+            <value>Video Source:</value>
+            <align>right,vcenter</align>
+        </textarea>
+        <textarea name="nochannum_label" from="base_textarea">
+            <area>610,570,360,36</area>
+            <value>Hide Channels without channel number.</value>
+        </textarea>
+
+        <buttonlist name="sorting" from="base_selector">
+            <position>330,530</position>
+        </buttonlist>
+        <buttonlist name="source" from="base_selector">
+            <position>330,570</position>
+        </buttonlist>
+        <checkbox name="nochannum" from="base_checkbox">
+            <position>570,570</position>
+        </checkbox>
+        <button name="delete" from="base_button">
+            <position>980,570</position>
+            <value>Delete</value>
+        </button>
+        
+        <shape name="button_separator" from="base_background_shape">
+            <area>136,620,1008,1</area>
+        </shape>
+
+        <button name="scan" from="base_button_wide">
+            <position>150,635</position>
+            <value>Channel Scan</value>
+        </button>
+        <button name="importicons" from="base_button_wide">
+            <position>490,635</position>
+            <value>Icon Download</value>
+        </button>
+        <button name="edittransport" from="base_button_wide">
+            <position>830,635</position>
+            <value>Edit Transports</value>
+        </button>
+
+    </window>
+
+
+
+
+
+    <!-- Shows two vertical lists where the user can select
+        which entries he wants to see in the OSD menu -->
+    <window name="osdmenueditor">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>OSD Menu Editor</value>
+            </textarea>
+        </textarea>
+
+        <shape name="osdmenueditor_background" from="base_background_shape">
+            <area>265,85,740,512</area>
+        </shape>
+        
+        <textarea name="states_label" from="base_textarea">
+            <area>280,95,350,20</area>
+            <value>States</value>
+            <font>text_small</font>
+        </textarea>
+        <textarea name="categories_label" from="base_textarea">
+            <area>640,95,350,20</area>
+            <value>Categories</value>
+            <font>text_small</font>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <buttonlist name="states" from="base_buttonlist">
+            <area>280,120,350,393</area>
+        </buttonlist>
+        <buttonlist name="categories" from="base_buttonlist">
+            <area>640,120,350,393</area>
+        </buttonlist>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>266,530,738,1</area>
+        </shape>
+
+         <button name="done" from="base_button">
+            <position>575,615</position>
+            <value>Done</value>
+        </button>
+
+    </window>
+
+
+    
+    
+    
+    <!-- Shows two vertical lists where the user can select
+        the language and country that the frontend shall use -->
+    <window name="languageselection">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+        
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Language Selection</value>
+            </textarea>
+        </textarea>
+        
+        <shape name="languageselection_background" from="base_background_shape">
+            <area>175,90,940,507</area>
+        </shape>
+
+        <textarea name="countrylabel" from="base_textarea">
+            <area>190,100,450,20</area>
+            <value>Country</value>
+            <font>text_small</font>
+        </textarea>
+
+        <textarea name="languagelabel" from="base_textarea">
+            <area>655,100,450,20</area>
+            <value>Language</value>
+            <font>text_small</font>
+        </textarea>
+
+        <!-- shows the list of available languages -->
+        <buttonlist name="countries" from="base_buttonlist">
+            <area>190,125,450,390</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,450,52</area>
+                    
+                    <imagetype name="buttonimage">
+                        <area>6,6,53,40</area>                        
+                        <filename />
+                    </imagetype>
+                    <shape name="buttonimage_background" from="base_background_shape">
+                        <area>5,5,55,42</area>
+                        <fill color="#000000" alpha="0" />
+                        <cornerradius>0</cornerradius>
+                    </shape>
+
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>70,2,100%-78,30</area>
+                    </textarea>
+                    <textarea name="nativecountry" from="base_textarea">
+                        <area>70,27,100%-78,20</area>
+                        <font>text_small</font>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+
+                </state>
+                
+                <state name="inactive" from="active" />
+                
+                <state name="selectedactive" from="active">
+                    <area>0,0,450,52</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,450,52</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+
+            <helptext>Select the country in which you currently reside</helptext>
+        </buttonlist>
+
+        <!-- shows the list of available languages -->
+        <buttonlist name="languages" from="base_buttonlist">
+            <area>650,125,450,390</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,450,52</area>
+
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,2,100%-16,30</area>
+                    </textarea>
+                    <textarea name="language" from="base_textarea">
+                        <area>8,27,100%-16,20</area>
+                        <font>text_small</font>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+
+                </state>
+
+                <state name="inactive" from="active" />
+                
+                <state name="selectedactive" from="active">
+                    <area>0,0,450,52</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,450,52</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+            
+            <helptext>Select your preferred language</helptext>
+        </buttonlist>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>176,530,938,1</area>
+        </shape>
+        
+        <button name="save" from="base_button">
+            <position>485,545</position>
+            <value>Save</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>650,545</position>
+            <value>Cancel</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,612</position>
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- Shows a list of the grabbers that are available -->
+    <window name="grabbersettings">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Artwork and Metadata Sources</value>
+            </textarea>
+        </textarea>
+
+        <shape name="grabbersettings_background" from="base_background_shape">
+            <area>185,225,900,372</area>
+        </shape>
+        
+        <textarea name="moviegrabber_text" from="base_textarea">
+            <area>200,240,490,36</area>
+            <align>right,vcenter</align>
+            <value>Movie Metadata Source:</value>
+        </textarea>
+        <textarea name="moviegrabberlanguage_text" from="moviegrabber_text">
+            <position>200,280</position>
+            <value>Use this language for the Movie Metadata</value>
+        </textarea>
+        
+        <textarea name="tvgrabber_text" from="moviegrabber_text">
+            <position>200,320</position>
+            <value>Television Metadata Source:</value>
+        </textarea>
+        <textarea name="tvgrabberlanguage_text" from="moviegrabber_text">
+            <position>200,360</position>
+            <value>Use this language for TV Metadata</value>
+        </textarea>
+        
+        <textarea name="gamegrabber_text" from="moviegrabber_text">
+            <position>200,400</position>
+            <value>Game Metadata Source:</value>
+        </textarea>
+        <textarea name="gamegrabberlanguage_text" from="moviegrabber_text">
+            <position>200,440</position>
+            <value>Use this language for Game Metadata</value>
+        </textarea>
+        
+        <textarea name="dailyupdates_text" from="moviegrabber_text">
+            <position>200,480</position>
+            <value>Perform daily updates of recording artwork</value>
+        </textarea>
+
+        <buttonlist name="moviegrabber" from="base_selector_wide">
+            <position>700,240</position>
+        </buttonlist>
+        <buttonlist name="moviegrabberlanguage" from="base_selector_wide">
+            <position>700,280</position>
+        </buttonlist>
+
+        <buttonlist name="tvgrabber" from="base_selector_wide">
+            <position>700,320</position>
+        </buttonlist>
+        <buttonlist name="tvgrabberlanguage" from="base_selector_wide">
+            <position>700,360</position>
+        </buttonlist>
+        
+        <buttonlist name="gamegrabber" from="base_selector_wide">
+            <position>700,400</position>
+        </buttonlist>
+        <buttonlist name="gamegrabberlanguage" from="base_selector_wide">
+            <position>700,440</position>
+        </buttonlist>
+        
+        <checkbox name="dailyupdates" from="base_checkbox">
+            <position>700,480</position>
+        </checkbox>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>186,530,898,1</area>
+        </shape>
+        
+        <button name="ok" from="base_button">
+            <position>485,545</position>
+            <value>Ok</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>650,545</position>
+            <value>Cancel</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,612</position>
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- Shows a screen where the user can 
+         specify the display of the date and time -->
+    <window name="generalwizard">
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>MythTV Configuration Wizard</value>
+            </textarea>
+        </textarea>
+
+        <shape name="generalwizard_background" from="base_background_shape">
+            <area>285,400,710,197</area>
+        </shape>
+ 
+        <textarea name="profiletext_label" from="base_textarea">
+            <area>300,415,200,36</area>
+            <align>right,vcenter</align>
+            <value>Current Profile:</value>
+        </textarea>
+        <textarea name="profiletext" from="base_textarea">
+            <area>510,415,470,36</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <shape name="button1_separator" from="base_background_shape">
+            <area>286,465,708,1</area>
+        </shape>
+
+        <button name="view" from="base_button">
+            <position>405,480</position>
+            <value>View</value>
+        </button>
+        <button name="submit" from="base_button">
+            <position>570,480</position>
+            <value>Submit</value>
+        </button>
+        <button name="delete" from="base_button">
+            <position>735,480</position>
+            <value>Delete</value>
+        </button>
+        
+        <shape name="button2_separator" from="base_background_shape">
+            <area>286,530,708,1</area>
+        </shape>
+        
+        <button name="cancel" from="base_button">
+            <position>485,545</position>
+            <value>Cancel</value>
+        </button>
+        <button name="next" from="base_button">
+            <position>650,545</position>
+            <value>Next</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,612</position>
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- Shows a screen where the user can set his audio settings -->
+    <window name="audiowizard">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Audio Configuration</value>
+            </textarea>
+        </textarea>
+
+        <shape name="audiowizard_background" from="base_background_shape">
+            <area>285,135,705,462</area>
+        </shape>
+
+        <textarea name="auddev_text" from="base_textarea">
+            <area>300,150,295,36</area>
+            <align>right,vcenter</align>
+            <value>Audio Device:</value>
+        </textarea>
+
+        <textarea name="speaktext_text" from="base_textarea">
+            <area>300,190,295,36</area>
+            <align>right,vcenter</align>
+            <value>Number of Speakers:</value>
+        </textarea>
+        
+        <buttonlist name="audiodevices" from="base_selector_wide">
+            <position>605,150</position>
+        </buttonlist>
+
+        <buttonlist name="speakers" from="base_selector_wide">
+            <position>605,190</position>
+        </buttonlist>
+        
+        <shape name="button1_separator" from="base_background_shape">
+            <area>286,240,703,1</area>
+        </shape>
+        
+        <textarea name="ac3_text" from="base_textarea">
+            <area>300,255,485,36</area>
+            <align>right,vcenter</align>
+            <value>My audio subsystem supports Dolby Digital</value>
+        </textarea>
+        <textarea name="dts_text" from="ac3_text">
+            <position>300,295</position>
+            <value>My audio subsystem supports DTS</value>
+        </textarea>
+        <textarea name="eac3_text" from="ac3_text">
+            <position>300,335</position>
+            <value>My audio subsystem supports E-AC-3</value>
+        </textarea>
+        <textarea name="truehd_text" from="ac3_text">
+            <position>300,375</position>
+            <value>My audio subsystem supports TrueHD</value>
+        </textarea>
+        <textarea name="dtshd_text" from="ac3_text">
+            <position>300,415</position>
+            <value>My audio subsystem supports DTS-HD</value>
+        </textarea>
+        
+        <checkbox name="ac3check" from="base_checkbox">
+            <position>800,255</position>
+        </checkbox>
+        <checkbox name="dtscheck" from="base_checkbox">
+            <position>800,295</position>
+        </checkbox>
+        <checkbox name="eac3check" from="base_checkbox">
+            <position>800,335</position>
+        </checkbox>
+        <checkbox name="truehdcheck" from="base_checkbox">
+            <position>800,375</position>
+        </checkbox>
+        <checkbox name="dtshdcheck" from="base_checkbox">
+            <position>800,415</position>
+        </checkbox>
+        
+        <shape name="button2_separator" from="base_background_shape">
+            <area>286,465,703,1</area>
+        </shape>
+        
+        <button name="testspeakers" from="base_button_wide">
+            <position>490,480</position>
+        </button>
+
+        <shape name="button3_separator" from="base_background_shape">
+            <area>286,530,703,1</area>
+        </shape>
+        
+        <button name="previous" from="base_button">
+            <position>485,545</position>
+            <value>Previous</value>
+        </button>
+        <button name="next" from="base_button">
+            <position>650,545</position>
+            <value>Next</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,612</position>
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- Shows a screen where the user can 
+         choose the vdpau playback profile, -->
+    <window name="videowizard">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Video Configuration</value>
+            </textarea>
+        </textarea>
+
+        <shape name="videowizard_background" from="base_background_shape">
+            <area>285,385,705,212</area>
+        </shape>
+
+        <textarea name="prof_text" from="base_textarea">
+            <area>300,400,295,36</area>
+            <align>right,vcenter</align>
+            <value>Video Profile Format:</value>
+        </textarea>
+
+        <buttonlist name="playbackprofiles" from="base_selector_wide">
+            <position>605,400</position>
+        </buttonlist>
+
+        <button name="testsd" from="base_button_wide">
+            <position>605,440</position>
+            <value>Test Standard Definition</value>
+        </button>
+
+        <button name="testhd" from="base_button_wide">
+            <position>605,480</position>
+            <value>Test High Definition</value>
+        </button>
+  
+        <shape name="button_separator" from="base_background_shape">
+            <area>286,530,703,1</area>
+        </shape>
+        
+        <button name="previous" from="base_button">
+            <position>485,545</position>
+            <value>Previous</value>
+        </button>
+        <button name="next" from="base_button">
+            <position>650,545</position>
+            <value>Finish</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,612</position>
+        </group>
+
+    </window>
+
+
+
+
+
+    <!-- Shows a list of available backends -->
+    <window name="backendselection">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/scripts.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>MythTV Servers</value>
+            </textarea>
+        </textarea>
+        
+        <shape name="backendselection_background" from="base_background_shape">
+            <area>275,110,740,487</area>
+        </shape>
+
+        <buttonlist name="backends" from="base_buttonlist">
+            <area>290,125,710,390</area>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,710,36</area>
+                    
+                    <textarea name="buttontext" from="base_textarea">
+                        <area>8,2,400,30</area>
+                    </textarea>
+                    
+                    <!-- Workaround for vanishing buttontext bug -->
+                    <textarea name="modelname" from="buttontext" />
+           
+                    <textarea name="version" from="base_textarea">
+                        <area>320,2,300,30</area>
+                        <align>right,vcenter</align>
+                        <template>Version: %1</template>
+                    </textarea>
+
+                    <textarea name="protocolversion" from="base_textarea">
+                        <area>8,27,300,20</area>
+                        <font>text_small</font>
+                        <template>Protocol-Version: %1</template>
+                    </textarea>
+
+                    <statetype name="connection">
+                        <area>320,27,300,20</area>
+                        <state name="good">
+                            <textarea name="description" from="base_textarea">
+                                <value>Connection Ok</value>
+                                <font>text_small</font>
+                            </textarea>
+                        </state>
+                        <state name="protocolmismatch">
+                            <textarea name="description" from="base_textarea">
+                                <value>Protocol Version Mismatch</value>
+                                <font>text_small_red</font>
+                            </textarea>
+                        </state>
+                        <state name="blocked">
+                            <textarea name="description" from="base_textarea">
+                                <value>Blocked By Firewall</value>
+                                <font>text_small_red</font>
+                            </textarea>
+                        </state>
+                    </statetype>
+
+                    <statetype name="securitypin">
+                        <position>670,0</position>
+                        <state name="yes">
+                            <area>3,3,26,26</area>
+                            <imagetype name="locked">
+                                <filename>images/icons/locked.png</filename>
+                            </imagetype>
+                        </state>
+                        <state name="no">
+                            <area>3,3,26,26</area>
+                            <imagetype name="unlocked">
+                                <filename>images/icons/unlocked.png</filename>
+                            </imagetype>
+                        </state>
+                    </statetype>
+                </state>
+
+                <state name="inactive" from="active" />
+
+                <state name="selectedactive" from="active">
+                    <area>0,0,710,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+
+                <state name="selectedinactive" from="active">
+                    <area>0,0,710,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+            
+            <helptext>Select the server you wish to connect to</helptext>
+        </buttonlist>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>276,530,738,1</area>
+        </shape>
+        
+        <button name="save" from="base_button">
+            <position>405,545</position>
+            <value>Save</value>
+        </button>
+        <button name="manual" from="base_button">
+            <position>570,545</position>
+            <value>Manual</value>
+        </button>
+        <button name="cancel" from="base_button">
+            <position>735,545</position>
+            <value>Cancel</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,612</position>
+        </group>
+
+    </window>
+
+</mythuitheme>

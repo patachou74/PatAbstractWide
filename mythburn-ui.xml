@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+<mythuitheme>
+
+    <!-- this is the theme selector screen where the user can choose from
+        a list of available themes. The DVD menu will then look like it -->
+    <window name="themeselector">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>DVD Menu Theme</value>
+            </textarea>
+        </textarea>
+
+        <shape name="themeselector_background" from="base_background_shape">
+            <area>335,180,630,220</area>
+        </shape>
+
+        <textarea name="themetitle" from="base_textarea">
+            <area>350,195,225,36</area>
+            <align>right,vcenter</align>
+            <value>Select a theme</value>
+        </textarea>
+
+        <buttonlist name="theme_selector" from="base_selector_wide">
+            <position>585,195</position>
+        </buttonlist>
+
+        <shape name="title_separator" from="base_background_shape">
+            <area>336,250,628,1</area>
+        </shape>
+
+        <textarea name="themedescription" from="base_textarea">
+            <area>350,260,600,70</area>
+            <multiline>yes</multiline>
+            <cutdown>no</cutdown>
+            <scroll direction="vertical" rate="10"/>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>336,335,628,1</area>
+        </shape>
+
+        <button name="cancel_button" from="base_button">
+            <position>410,350</position>
+            <value>Cancel</value>
+        </button>
+        <button name="prev_button" from="base_button">
+            <position>575,350</position>
+            <value>Previous</value>
+        </button>
+        <button name="next_button" from="base_button">
+            <position>740,350</position>
+            <value>Next</value>
+        </button>
+
+        <shape name="themeselector_preview_background" from="base_background_shape">
+            <area>60,415,1180,250</area>
+        </shape>
+
+        <!-- the four preview images -->
+        <imagetype name="intro_image_background">
+            <area>75,430,280,220</area>
+            <filename>images/media/archive_preview_bg.png</filename>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="intro_image">
+            <area>75,430,280,220</area>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="intro_image_border">
+            <area>75,430,280,220</area>
+            <filename>images/media/archive_preview_border.png</filename>
+        </imagetype>
+
+        <textarea name="introtitle" from="base_textarea">
+            <area>95,605,240,36</area>
+            <value>Intro</value>
+        </textarea>
+
+        <imagetype name="mainmenu_image_background">
+            <area>365,430,280,220</area>
+            <filename>images/media/archive_preview_bg.png</filename>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="mainmenu_image">
+            <area>365,430,280,220</area>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="mainmenu_image_border">
+            <area>365,430,280,220</area>
+            <filename>images/media/archive_preview_border.png</filename>
+        </imagetype>
+
+        <textarea name="menutitle" from="introtitle">
+            <position>385,605</position>
+            <value>Main Menu</value>
+        </textarea>
+
+        <imagetype name="chapter_image_background">
+            <area>655,430,280,220</area>
+            <filename>images/media/archive_preview_bg.png</filename>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="chapter_image">
+            <area>655,430,280,220</area>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="chapter_image_border">
+            <area>655,430,280,220</area>
+            <filename>images/media/archive_preview_border.png</filename>
+        </imagetype>
+
+        <textarea name="chaptertitle" from="introtitle">
+            <position>675,605</position>
+            <value>Chapter Menu</value>
+        </textarea>
+
+        <imagetype name="details_image_background">
+            <area>945,430,280,220</area>
+            <filename>images/media/archive_preview_bg.png</filename>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="details_image">
+            <area>945,430,280,220</area>
+            <mask>images/media/archive_preview_mask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="details_image_border">
+            <area>945,430,280,220</area>
+            <filename>images/media/archive_preview_border.png</filename>
+        </imagetype>
+
+        <textarea name="detailtitle" from="introtitle">
+            <position>965,605</position>
+            <value>Details</value>
+        </textarea>
+
+        <!-- This preview image is not required. It shows the 
+             same preview as one of the four other image and 
+             will be shown outside of the screen because -->
+        <imagetype name="theme_image">
+            <area>1280,720,1,1</area>
+            <preserveaspect>false</preserveaspect>
+        </imagetype>
+
+    </window>
+
+
+    <!-- this is the main mythburn screen where the user can select the
+        recordings and videos that shall be burnt to disc -->
+    <window name="mythburn" include="base_archive.xml">
+
+        <imagetype name="background" from="base_background" />
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Archive Items</value>
+            </textarea>
+        </textarea>
+
+        <group name="archivelist_group" from="base_archivelist_group">
+            <position>125,125</position>
+        </group>
+
+        <group name="progress_status_group" from="base_progress_status_group">
+            <position>125,555</position>
+        </group>
+
+    </window>
+
+
+
+    <!-- Presents a list of the available encoding profiles with a small 
+         description that the user can choose to create an archive -->
+    <window name="profilepopup">
+
+        <imagetype name="background" from="base_background" />
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Change Encoding Profile</value>
+            </textarea>
+        </textarea>
+
+        <shape name="profilepopup_background" from="base_background_shape">
+            <area>445,345,390,252</area>
+        </shape>
+
+        <textarea name="title_label" from="base_textarea">
+            <area>460,360,135,36</area>
+            <align>right,vcenter</align>
+            <value>Title:</value>
+        </textarea>
+        <textarea name="profile_label" from="title_label">
+            <position>460,400</position>
+            <value>Profile:</value>
+        </textarea>
+        <textarea name="oldsize_label" from="title_label">
+            <position>460,440</position>
+            <value>Old Size:</value>
+        </textarea>
+        <textarea name="newsize_label" from="title_label">
+            <position>460,480</position>
+            <value>New Size:</value>
+        </textarea>
+
+        <textarea name="caption_text" from="base_textarea">
+            <area>605,360,185,36</area>
+        </textarea>
+        <buttonlist name="profile_list" from="base_selector">
+            <position>605,400</position>
+        </buttonlist>
+        <textarea name="oldsize_text" from="caption_text">
+            <position>605,440</position>
+        </textarea>
+        <textarea name="newsize_text" from="caption_text">
+            <position>605,480</position>
+        </textarea>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>446,530,388,1</area>
+        </shape>
+        
+        <button name="ok_button" from="base_button">
+            <position>565,545</position>
+            <value>Save</value>
+        </button>
+        
+        <shape name="description_text_background_bottom" from="base_background_shape">
+            <area>-5,615,1290,90</area>
+        </shape>
+        <textarea name="description_text" from="base_textarea">
+            <area>120,615,1040,90</area>
+            <cutdown>yes</cutdown>
+            <align>allcenter</align>
+            <multiline>yes</multiline>
+        </textarea>
+
+    </window>
+
+
+
+
+
+
+    <!-- this is the screen where the user can edit some
+        information about the archive -->
+    <window name="edit_metadata">
+
+        <imagetype name="background" from="base_background" />
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Archive Item Details</value>
+            </textarea>
+        </textarea>
+
+        <shape name="edit_metadata_background" from="base_background_shape">
+            <area>350,305,600,295</area>
+        </shape>
+
+        <textarea name="title_label" from="base_textarea">
+            <area>365,320,175,36</area>
+            <align>right,vcenter</align>
+            <value>Title:</value>
+        </textarea>
+        <textarea name="subtitle_label" from="title_label">
+            <position>365,360</position>
+            <value>Subtitle:</value>
+        </textarea>
+        <textarea name="startdate_label" from="title_label">
+            <position>365,400</position>
+            <value>Start Date:</value>
+        </textarea>
+        <textarea name="starttime_label" from="title_label">
+            <position>365,440</position>
+            <value>Time:</value>
+        </textarea>
+        <textarea name="description_label" from="title_label">
+            <position>365,480</position>
+            <value>Description:</value>
+        </textarea>
+
+        <textedit name="title_edit" from="base_textedit">
+            <position>550,320</position>
+        </textedit>
+        <textedit name="subtitle_edit" from="base_textedit">
+            <position>550,360</position>
+        </textedit>
+        <textedit name="startdate_edit" from="base_textedit">
+            <position>550,400</position>
+        </textedit>
+        <textedit name="starttime_edit" from="base_textedit">
+            <position>550,440</position>
+        </textedit>
+        <textedit name="description_edit" from="base_textedit">
+            <position>550,480</position>
+        </textedit>
+
+        <shape name="button_separator" from="base_background_shape">
+            <area>351,530,598,1</area>
+        </shape>
+        
+        <button name="ok_button" from="base_button">
+            <position>485,545</position>
+            <value>Save</value>
+        </button>
+        <button name="cancel_button" from="base_button">
+            <position>650,545</position>
+            <value>Cancel</value>
+        </button>
+        
+        <group name="base_helptext_group" from="base_helptext_group">
+            <position>0,615</position>
+        </group>
+
+    </window>
+
+</mythuitheme>

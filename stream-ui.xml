@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mythuitheme SYSTEM "http://www.mythtv.org/schema/mythuitheme.dtd">
+
+<mythuitheme>
+
+    <!-- TODO Fix the visualizer border stuff, mask isnt working for the video widget -->
+    <!-- Shows the current internet streams and more detailed information about
+        the current song. Also shows the coverart and the visualizer -->
+    <window name="streamview" include="base_music.xml">
+
+        <imagetype name="background" from="base_background">
+		        <filename>images/watermarks/music.jpg</filename>
+        </imagetype>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Internet Stream View</value>
+            </textarea>
+        </textarea>
+
+        <textarea name="nostreams" from="base_textarea">
+            <area>20,505,1240,30</area>
+            <align>allcenter</align>
+            <value>Press MENU to add some radio streams to play.</value>
+        </textarea>
+
+        <shape name="streamlist_background" from="base_background_shape">
+            <area>20,50,330,480</area>
+        </shape>
+
+        <buttonlist name="streamlist" from="base_buttonlist">
+            <area>35,68,300,450</area>
+            <spacing>3</spacing>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,300,52</area>
+
+                    <shape name="buttonimage_background" from="base_background_shape">
+                        <area>5,5,42,42</area>
+                        <cornerradius>0</cornerradius>
+                    </shape>
+                    <imagetype name="buttonimage">
+                        <area>6,6,40,40</area>                        
+                    </imagetype>
+
+                    <textarea name="station" from="base_textarea">
+                        <area>55,2,200,30</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                    <textarea name="channel" from="base_textarea">
+                        <area>55,27,200,20</area>
+                        <font>text_small</font>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+
+                    <!-- optional textarea name="genre" -->
+
+                    <statetype name="playstate" from="base_music_playstate">
+                        <area>265,3,30,30</area>
+                    </statetype>
+                </state>
+                <state name="inactive" from="active"/>
+                <state name="selectedactive" from="active">
+                    <area>0,0,300,52</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,300,52</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+            
+            <statetype name="upscrollarrow">
+                <position>100%-75,100%-10</position>
+            </statetype>
+            <statetype name="downscrollarrow">
+                <position>100%-100,100%-10</position>
+            </statetype>
+        </buttonlist>
+        
+        <shape name="playedtrackslist_background" from="base_background_shape">
+            <area>365,50,895,480</area>
+        </shape>
+        
+        <buttonlist name="playedtrackslist" from="base_buttonlist">
+            <area>380,65,865,453</area>
+            <spacing>1</spacing>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,865,36</area>
+
+                    <shape name="buttonimage_background" from="base_background_shape">
+                        <area>4,3,30,30</area>
+                        <cornerradius>0</cornerradius>
+                    </shape>
+                    <imagetype name="buttonimage">
+                        <area>5,4,28,28</area>
+                    </imagetype>
+
+                    <textarea name="tracknum" from="base_textarea">
+                        <area>45,3,50,30</area>
+                        <align>right,vcenter</align>
+                        <template>%1 -</template>
+                    </textarea>
+                    <textarea name="title" from="base_textarea">
+                        <area>105,3,300,30</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                    <textarea name="artist" from="base_textarea">
+                        <area>420,3,320,30</area>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                    <textarea name="length" from="base_textarea">
+                        <area>760,3,95,30</area>
+                        <align>right,vcenter</align>
+                        <scroll direction="horizontal" rate="35"/>
+                    </textarea>
+                </state>
+                <state name="inactive" from="active"/>
+                <state name="selectedactive" from="active">
+                    <area>0,0,865,36</area>
+                    <shape name="background" from="base_button_shape_selectedactive" />
+                </state>
+                <state name="selectedinactive" from="active">
+                    <area>0,0,865,36</area>
+                    <shape name="background" from="base_button_shape_selectedinactive" />
+                </state>
+            </statetype>
+            
+            <statetype name="upscrollarrow">
+                <position>100%-30,100%-10</position>
+            </statetype>
+
+            <statetype name="downscrollarrow">
+                <position>100%-55,100%-10</position>
+            </statetype>
+        </buttonlist>
+
+        <!-- this is the background for the information at the bottom like
+            shows coverart, track details, ratings and the visualizer -->
+        <shape name="trackdetails_background" from="base_background_shape">
+            <area>20,545,1240,165</area>
+        </shape>
+
+        <!-- this is the actual cover image that will be shown if its
+            available, otherwise only the background image is visible -->
+        <imagetype name="coverart_background_image">
+            <area>36,561,133,133</area>
+            <mask>images/media/music_item_nfmask.png</mask>
+            <filename>images/media/music_type/album.png</filename>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="coverart">
+            <area>36,561,133,133</area>
+            <mask>images/media/music_item_nfmask.png</mask>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <imagetype name="coverart_border">
+            <area>36,561,133,133</area>
+            <filename>images/media/music_item_nfborder.png</filename>
+        </imagetype>
+
+        <!-- the vertical separator -->
+        <shape name="cover_separator" from="base_background_shape">
+            <area>185,546,1,163</area>
+        </shape>
+        
+        <imagetype name="ratingstate_background" from="base_rating_background">
+            <position>980,565</position>
+        </imagetype>
+        <statetype name="ratingstate" from="base_rating">
+            <position>980,565</position>
+        </statetype>
+        
+        <textarea name="title" from="base_textarea">
+            <area>200,560,770,30</area>
+            <font>title</font>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <textarea name="artist" from="base_textarea">
+            <area>200,595,870,30</area>
+            <scroll direction="horizontal" rate="35"/>
+        </textarea>
+
+        <textarea name="channel" from="base_textarea">
+            <area>200,630,600,30</area>
+            <font>text_grey</font>
+            <scroll direction="horizontal" rate="35"/>
+            <template>%STATION% - %CHANNEL%</template>
+        </textarea>
+
+        <progressbar name="bufferprogress" from="base_progressbar">
+            <position>200,670</position>
+        </progressbar>
+
+        <textarea name="bufferstatus" from="base_textarea">
+            <area>715,665,140,30</area>
+        </textarea>
+        
+        <textarea name="lastplayed" from="base_textarea">
+            <area>820,630,250,30</area>
+            <align>right,vcenter</align>
+            <template>Last played: %1</template>
+        </textarea>
+
+        <textarea name="playcount" from="base_textarea">
+            <area>860,665,210,30</area>
+            <align>right,vcenter</align>
+            <template>Played %1 times</template>
+        </textarea>
+
+        <!-- the vertical separator -->
+        <shape name="visualizer_separator" from="base_background_shape">
+            <area>1092,546,1,163</area>
+        </shape>
+
+        <!-- the visualizer and the border around it -->
+        <imagetype name="visualizer_background_image">
+            <area>1110,561,133,133</area>
+            <mask>images/media/music_item_nfmask.png</mask>
+            <filename>images/media/music_visualization_bg.png</filename>
+            <preserveaspect>true</preserveaspect>
+        </imagetype>
+        <video name="visualizer">
+            <area>1110,561,133,133</area>
+        </video>
+        <imagetype name="visualizer_border">
+            <area>1110,561,133,133</area>
+            <filename>images/media/music_item_nfborder.png</filename>
+        </imagetype>
+
+
+        <!-- This button is not visible and only included to take away 
+            the focus from the playlist. If this button has focus 
+            then the fast forward and backward action can be used -->
+        <button name="musiccontrols" from="base_button">
+            <position>580,725</position>
+        </button>
+    
+    </window>
+    
+    
+    <!-- Shows the available stream information that can be edited -->
+    <window name="editstreammetadata">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Add/Edit Music Stream</value>
+            </textarea>
+        </textarea>
+
+        <shape name="editstreammetadata_background" from="base_background_shape">
+            <area>70,90,1040,560</area>
+        </shape>
+ 
+       <textarea name="broadcasterlabel" from="base_textarea" >
+            <area>14,90,250,50</area>
+            <align>right,vcenter</align>
+            <value>Broadcaster/Channel:</value>
+        </textarea>
+        <textedit name="broadcasteredit" from="base_textedit">
+            <area>274,98,255,30</area>
+        </textedit>
+        <textedit name="channeledit" from="base_textedit">
+            <position>700,98</position>
+        </textedit>
+
+        <textarea name="descriptionlabel" from="broadcasterlabel">
+            <position>14,140</position>
+            <value>Description:</value>
+        </textarea>        
+        <textedit name="descriptionedit" from="base_textedit_URLwide">
+            <area>274,148,800,30</area>
+        </textedit>
+
+        <textarea name="url1label" from="broadcasterlabel">
+            <position>14,190</position>
+            <value>URL1:</value>
+        </textarea>
+        <textedit name="url1edit" from="base_textedit_URLwide">
+            <position>274,198</position>
+        </textedit>
+
+        <textarea name="url2label" from="broadcasterlabel">
+            <position>14,240</position>
+            <value>URL2:</value>
+        </textarea>
+        <textedit name="url2edit" from="base_textedit_URLwide">
+            <position>274,248</position>
+        </textedit>
+
+        <textarea name="url3label" from="broadcasterlabel">
+            <position>14,290</position>
+            <value>URL3:</value>
+        </textarea>
+        <textedit name="url3edit" from="base_textedit_URLwide">
+            <position>274,298</position>
+        </textedit>
+
+        <textarea name="url4label" from="broadcasterlabel">
+            <position>14,340</position>
+            <value>URL4:</value>
+        </textarea>
+        <textedit name="url4edit" from="descriptionedit">
+            <position>274,348</position>
+        </textedit>
+
+        <textarea name="url5label" from="broadcasterlabel">
+            <position>14,390</position>
+            <value>URL5:</value>
+        </textarea>
+        <textedit name="url5edit" from="descriptionedit">
+            <position>274,398</position>
+        </textedit>
+
+        <textarea name="logourllabel" from="broadcasterlabel">
+            <position>14,440</position>
+            <value>Logo URL:</value>
+        </textarea>
+        <textedit name="logourledit" from="base_textedit_URLwide">
+            <position>274,448</position>
+        </textedit>
+
+        <textarea name="genrelabel" from="broadcasterlabel">
+            <position>14,490</position>
+            <value>Genres/Format:</value>
+        </textarea>
+        <textedit name="genreedit" from="base_textedit">
+            <position>274,498</position>
+        </textedit>
+        <textedit name="formatedit" from="base_textedit">
+            <position>700,498</position>
+        </textedit>
+
+        <textarea name="countrylabel" from="broadcasterlabel">
+            <position>14,540</position>
+            <value>Country/Language:</value>
+        </textarea>
+        <textedit name="countryedit" from="base_textedit">
+            <position>274,548</position>
+        </textedit>
+        <textedit name="languageedit" from="base_textedit">
+            <position>700,548</position>
+        </textedit>
+
+        <button name="searchbutton" from="basebutton">
+            <position>274,600</position>
+            <value>Search For Stream</value>
+        </button>
+        
+        <button name="cancelbutton" from="basebutton">
+            <position>700,600</position>
+            <value>Cancel</value>
+        </button>
+
+        <button name="savebutton" from="basebutton">
+            <position>920,600</position>
+            <value>Save</value>
+        </button>
+
+    </window>
+    
+    <!-- TODO add a better icecase placeholder -->
+    <!-- TODO check whats with the selectedstate -->
+    <!-- Shows all available streams that can be selected -->
+    <window name="searchstream">
+
+        <imagetype name="background" from="base_background"/>
+
+        <textarea name="heading" from="base_heading">
+            <position>0,0</position>
+            <textarea name="text">
+                <value>Search for Music Stream</value>
+            </textarea>
+        </textarea>
+
+        <shape name="searchstream_background" from="base_background_shape">
+            <area>150,90,970,570</area>
+        </shape>
+
+        <textarea name="broadcasterlabel"  from="base_textarea">
+            <area>164,100,250,50</area>
+            <align>right,vcenter</align>
+            <value>Broadcaster:</value>
+        </textarea>
+        <buttonlist name="broadcasterlist" from="base_selector_wide">
+            <position>420,106</position>
+        </buttonlist>
+
+        <textarea name="genrelabel" from="broadcasterlabel">
+            <position>164,150</position>
+            <value>Genre:</value>
+        </textarea>
+        <buttonlist name="genrelist" from="base_selector_wide">
+            <position>420,156</position>
+        </buttonlist>
+
+        <textarea name="channellabel" from="broadcasterlabel">
+            <position>164,200</position>
+            <value>Channel:</value>
+        </textarea>
+        <textedit name="channeledit" from="base_textedit">
+            <position>420,206</position>
+        </textedit>
+
+        <textarea name="matcheslable" from="broadcasterlabel">
+            <area>500,250,160,30</area>
+            <align>right,vcenter</align>
+            <value>Matches:</value>
+        </textarea>
+        <textarea name="matchestext" from="broadcasterlabel">
+            <area>670,250,100,30</area>
+            <align>left,vcenter</align>
+        </textarea>
+
+        <buttonlist name="streamlist" from="basebuttonlist2">
+            <area>265,270,760,380</area>
+            <spacing>0</spacing>
+            <layout>vertical</layout>
+            <arrange>stack</arrange>
+            <showarrow>no</showarrow>
+            <searchposition>-1,50</searchposition>
+            <buttonarea>0,0,760,380</buttonarea>
+            <statetype name="buttonitem">
+                <state name="active">
+                    <area>0,0,100%,46</area>
+                    <imagetype name="buttonimage">
+                        <area>5,5,36,36</area>
+                        <filename>mm_icecast.png</filename>
+                    </imagetype>
+
+                    <textarea name="broadcasterchannel" from="buttontext">
+                        <area>50,0,400,46</area>
+                        <align>left,vcenter</align>
+                    </textarea>
+
+                    <textarea name="language" from="buttontext">
+                        <area>460,0,310,46</area>
+                        <align>left,vcenter</align>
+                        <template>%COUNTRY%/%LANGUAGE%</template>
+                    </textarea>
+
+                </state>
+                <state name="selectedactive" from="active">
+                    <imagetype name="buttonimage">
+                        <area>5,5,36,36</area>
+                        <filename>mm_icecast.png</filename>
+                    </imagetype>
+                    <shape name="selectbar">
+                        <area>0,0,760,46</area>
+                    </shape>
+                </state>
+                <state name="selectedinactive" from="active">
+                    <shape name="selectbar">
+                        <area>0,0,760,46</area>
+                    </shape>
+                </state>
+            </statetype>
+
+            <statetype name="upscrollarrow">
+                <position>700,360</position>
+            </statetype>
+
+            <statetype name="downscrollarrow">
+                <position>730,360</position>
+            </statetype>
+        </buttonlist>
+
+    </window>
+
+</mythuitheme>
